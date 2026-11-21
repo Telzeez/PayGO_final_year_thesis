@@ -12,7 +12,7 @@ A further concern is the upkeep of solar installations. Solar panels, batteries,
 
 1 
 
-The decline in photovoltaic output is supported by field evidence. (Jordan and Kurtz, 2013) reviewed nearly 2,000 degradation measurements from photovoltaic modules and systems and reported a median power-output degradation rate of approximately 0.5% per year. A more recent meta-analysis by (Straub-Mück et al., 2025) based on 610 observations from 80 studies, reported a median annual degradation rate of 0.94%. The authors also found that reported degradation rates are significantly influenced by cell technology, mounting location and the measurement approach used in each study. These findings show that the rated output of a solar installation should not be assumed to remain constant throughout its service life. In this study, degradation refers specifically to the gradual, irreversible reduction in a photovoltaic (PV) module's maximum power output over time under comparable operating conditions. This phenomenon is distinct from temporary output reductions caused by fluctuating irradiance, shading, or surface soiling, which require different corrective measures. 
+The decline in photovoltaic output is supported by field evidence. Jordan and Kurtz (2013) reviewed nearly 2,000 degradation measurements from photovoltaic modules and systems and reported a median power-output degradation rate of approximately 0.5% per year. A more recent meta-analysis by Straub-Mück et al. (2025), based on 610 observations from 80 studies, reported a median annual degradation rate of 0.94%. The authors also found that reported degradation rates are significantly influenced by cell technology, mounting location and the measurement approach used in each study. These findings show that the rated output of a solar installation should not be assumed to remain constant throughout its service life. In this study, degradation refers specifically to the gradual, irreversible reduction in a photovoltaic (PV) module's maximum power output over time under comparable operating conditions. This phenomenon is distinct from temporary output reductions caused by fluctuating irradiance, shading, or surface soiling, which require different corrective measures. 
 
 To illustrate the cumulative effect of degradation, a module experiencing a constant degradation rate of 0.5% per year would undergo an estimated linear power-output reduction of approximately 5% over ten years; at a rate of 0.94% per year, the corresponding simple estimate is about 9.4%. These figures serve as theoretical illustrations derived from published literature rather than empirical measurements from the PAYGO prototype or universal predictions for all Nigerian installations. Actual long-term performance depends on module technology, local climate, installation quality, and operating conditions. Nevertheless, this evidence provides a clear technical justification for system owners to plan for periodic inspection, preventive maintenance, and eventual component replacement. 
 
@@ -38,11 +38,7 @@ One problem is the absence of a simple and reliable arrangement for measuring th
 
 Another problem is the lack of an integrated prepaid mechanism that connects measured energy consumption to a consumer's available credit. Where energy usage and payment records are handled separately, it may be difficult to maintain an accurate account of the energy supplied. A system is therefore required to link energy measurement, credit deduction and load control. 
 
-A further problem concerns the long-term upkeep of small solar installations. The performance of photovoltaic modules can decline over time: a review of nearly 2,000 field degradation measurements reported a median annual power-output degradation rate of 0.5%, while a 2025 meta-analysis of 610 observations reported a median of 0.94% per year (Jordan 
-
-4 
-
-and Kurtz, 2013; Straub-Mück, Geyer-Klingeberg and Rathgeber, 2025). The rate varies with cell technology, mounting location and measurement approach, but the evidence demonstrates that solar-system output may reduce as equipment ages. Batteries and other system components also require inspection and eventual replacement during the operating life of an installation. These activities involve costs, yet a system owner may have no regular income from the installation beyond its direct use. Where surplus energy can be supplied to other users and charged for according to measured consumption, the resulting income can provide a means of contributing towards maintenance and continued operation. 
+A further problem concerns the long-term upkeep of small solar installations. The performance of photovoltaic modules can decline over time: a review of nearly 2,000 field degradation measurements reported a median annual power-output degradation rate of 0.5%, while a 2025 meta-analysis of 610 observations reported a median of 0.94% per year (Jordan and Kurtz, 2013; Straub-Mück et al., 2025). The rate varies with cell technology, mounting location and measurement approach, but the evidence demonstrates that solar-system output may reduce as equipment ages. Batteries and other system components also require inspection and eventual replacement during the operating life of an installation. These activities involve costs, yet a system owner may have no regular income from the installation beyond its direct use. Where surplus energy can be supplied to other users and charged for according to measured consumption, the resulting income can provide a means of contributing towards maintenance and continued operation. 
 
 There is also a need for remote monitoring and management of the metering device. System owners require access to relevant information such as energy consumption, available credit, payment records and device status. In addition, potential consumers need a convenient way to discover nearby energy sources that may serve their location. These requirements call for an integrated system that combines embedded metering, prepaid billing, communication, digital payment and location-aware energy discovery. 
 
@@ -140,9 +136,9 @@ Sections 2.2 and 2.3 describe the energy context and the solar systems concerned
 
 Studies of Nigeria’s energy situation describe persistent energy poverty and the need for improved supply and etering (Monyei et al., 2018), and estimated billing has been identified as a continuing problem for electricity consumers (Soyemi et al., 2021). 
 
-Nigeria has a substantial solar resource, with solar radiation generally higher in the north of the country than in the south (Mohammed et al., 2013; Chanchangi et al., 2023). Solar photovoltaic (PV) systems are therefore among the technologies most often considered for improving access, particularly where extending conventional infrastructure is difficult or uneconomic. Off-grid and standalone systems typically combine PV modules, powerconditioning equipment, energy storage and electrical loads. Their technical and economic performance depends on correct sizing, energy management, storage and monitoring (Oladigbolu et al., 2020; Olatomiwa et al., 2015). 
+Nigeria has a substantial solar resource, with solar radiation generally higher in the north of the country than in the south (Mohammed et al., 2013; Chanchangi et al., 2023). Solar photovoltaic (PV) systems are therefore among the technologies most often considered for improving access, particularly where extending conventional infrastructure is difficult or uneconomic. Off-grid and standalone systems typically combine PV modules, powerconditioning equipment, energy storage and electrical loads. Their technical and economic performance depends on correct sizing, energy management, storage and monitoring (Olatomiwa et al., 2015; Oladigbolu et al., 2020). 
 
-Distributed generation also changes the relationship between those who produce and those who consume electricity. A household with a solar installation can potentially supply other users nearby. A participant who both produces and consumes electricity is described as a prosumer(Reddy et al., 2014), and this idea underlies research on local energy markets and peer-to-peer energy trading (Soto et al., 2021;Baig et al., 2021) For the present project, decentralised solar generation is the energy source around which the metering, prepaid billing and energy-discovery functions are organised. 
+Distributed generation also changes the relationship between those who produce and those who consume electricity. A household with a solar installation can potentially supply other users nearby. A participant who both produces and consumes electricity is described as a prosumer (Reddy et al., 2014), and this idea underlies research on local energy markets and peer-to-peer energy trading (Baig et al., 2021; Soto et al., 2021). For the present project, decentralised solar generation is the energy source around which the metering, prepaid billing and energy-discovery functions are organised. 
 
 # **2.3 Solar Photovoltaic Energy Systems** 
 
@@ -152,7 +148,7 @@ Solar PV technology converts solar radiation directly into electrical energy usi
 
 an inverter converts the available DC energy into AC electricity (Chanchangi et al., 2023). Because solar generation varies with weather and time of day, batteries store energy for later use, and the interaction between generation, storage and consumption makes monitoring an important part of managing standalone systems (Oladigbolu et al., 2020). 
 
-Earlier work has used IoT-based monitoring to report the performance and operating conditions of PV systems. (Wibowo et al., 2024), for example, developed an IoT-based monitoring system for an on-grid PV installation using a NodeMCU ESP8266 and a PZEM-004T module and reported an average accuracy of 96.37% across the measured parameters. Such work shows the value of connecting energy systems to digital platforms. However, monitoring generation does not allocate electricity among several users. Where one installation supplies more than one consumer, the energy used by each must be measured separately through individual sub-metering (Numminen and Lund, 2019) The PAYGO system therefore concentrates on the consumption side of decentralised solar energy, managing user access and billing without replacing the PV generation or storage equipment (Mergulhão et al., 2026) 
+Earlier work has used IoT-based monitoring to report the performance and operating conditions of PV systems. Wibowo et al. (2024), for example, developed an IoT-based monitoring system for an on-grid PV installation using a NodeMCU ESP8266 and a PZEM-004T module and reported an average accuracy of 96.37% across the measured parameters. Such work shows the value of connecting energy systems to digital platforms. However, monitoring generation does not allocate electricity among several users. Where one installation supplies more than one consumer, the energy used by each must be measured separately through individual sub-metering (Numminen and Lund, 2019). The PAYGO system therefore concentrates on the consumption side of decentralised solar energy, managing user access and billing without replacing the PV generation or storage equipment (Mergulhão et al., 2026) 
 
 # **2.4 Solar PV Module Degradation** 
 
@@ -160,13 +156,13 @@ Solar modules gradually lose the ability to produce electricity as they age. In 
 
 11 
 
-(Jordan and Kurtz, 2013)assembled nearly 2,000 degradation rates measured on individual modules and entire systems and reported a median value of 0.5% per year. A more recent meta-analysis by (Straub-Mück et al., 2025) examined 610 observations from 80 primary studies and reported a median degradation rate of 0.94% per year. They found that cell technology, mounting location and methodological choices significantly influenced the reported rates, and they predicted an average lifespan of 47 years for well-ventilated crystalline silicon modules in cold climates. The difference between the two medians, and the factors identified by the later study, show that degradation rates differ between studies, technologies and installations. 
+Jordan and Kurtz (2013) assembled nearly 2,000 degradation rates measured on individual modules and entire systems and reported a median value of 0.5% per year. A more recent meta-analysis by (Straub-Mück et al., 2025) examined 610 observations from 80 primary studies and reported a median degradation rate of 0.94% per year. They found that cell technology, mounting location and methodological choices significantly influenced the reported rates, and they predicted an average lifespan of 47 years for well-ventilated crystalline silicon modules in cold climates. The difference between the two medians, and the factors identified by the later study, show that degradation rates differ between studies, technologies and installations. 
 
 Note that these values represent reported literature medians rather than guaranteed rates for a specific installation, nor are they empirical measurements from the PAYGO prototype. For illustration, a linear loss of 0.5% per year corresponds to an approximate 5% reduction in power output over ten years, whereas a loss of 0.94% per year results in a 9.4% reduction. Practically, this indicates that solar generation cannot be assumed constant over a system's service life, requiring operators to account for periodic inspection, maintenance, and eventual component replacement. 
 
 # **2.5 Battery Ageing and Maintenance of Solar Systems** 
 
-Batteries are usually the component of a standalone solar system that needs the most attention over time. (Vetter et al., 2005) reviewed the ageing mechanisms of lithium-ion batteries and described how repeated cycling and storage lead to capacity fade, power fade and rising impedance. Operating conditions such as temperature and the way the battery is charged and discharged influence the rate at which this occurs. (Xu et al., 2018) proposed a semi-empirical model that estimates the loss of battery life from an operating profile and 
+Batteries are usually the component of a standalone solar system that needs the most attention over time. Vetter et al. (2005) reviewed the ageing mechanisms of lithium-ion batteries and described how repeated cycling and storage lead to capacity fade, power fade and rising impedance. Operating conditions such as temperature and the way the battery is charged and discharged influence the rate at which this occurs. Xu et al. (2018) proposed a semi-empirical model that estimates the loss of battery life from an operating profile and 
 
 12 
 
@@ -178,11 +174,11 @@ This is where the PAYGO concept becomes relevant. If an owner has surplus electr
 
 # **2.6 PAYGO Solar Energy Systems** 
 
-Pay-As-You-Go (PAYGO) systems have been used to widen access to solar technology in developing countries. Instead of paying the full cost of a system at once, the customer makes smaller payments over time (Rolffs et al., 2015; Yadav et al., 2019). (Rolffs et al., 2015) examined PAYGO financing of solar home systems in Kenya and found that it fits existing social practices of paying for energy in small amounts. (Yadav et al., 2019) analysed the success of the model in Sub-Saharan Africa and its prospects in rural India, and described it 
+Pay-As-You-Go (PAYGO) systems have been used to widen access to solar technology in developing countries. Instead of paying the full cost of a system at once, the customer makes smaller payments over time (Rolffs et al., 2015; Yadav et al., 2019). Rolffs et al. (2015) examined PAYGO financing of solar home systems in Kenya and found that it fits existing social practices of paying for energy in small amounts. Yadav et al. (2019) analysed the success of the model in Sub-Saharan Africa and its prospects in rural India, and described it 
 
 13 
 
-as a business model in which payments are made online in a flexible manner. (Barry and Creti, 2020) analysed PAYGO contracts held by 10,120 customers in Benin and concluded that in their case study PAYGO targets credit-worthy consumers, which raises doubts about whether it bridges the last-mile electrification gap. 
+as a business model in which payments are made online in a flexible manner. Barry and Creti (2020) analysed PAYGO contracts held by 10,120 customers in Benin and concluded that in their case study PAYGO targets credit-worthy consumers, which raises doubts about whether it bridges the last-mile electrification gap. 
 
 A typical PAYGO arrangement has three elements: an energy system that supplies electricity, a payment mechanism through which the customer pays for access, and a control mechanism through which payment status determines whether the system continues to operate. Digital communication allows these to be linked remotely, so that a payment made on a mobile or electronic platform updates the state of the equipment. 
 
@@ -216,7 +212,7 @@ the energy consumed over the period. The process can be described as payment, cr
 
 allocation, energy consumption, credit deduction and, when credit is exhausted, restriction of supply. 
 
-Existing prepaid designs use microcontrollers, displays and communication modules to implement this process. (Quazi et al., 2011) built a prepaid meter on an AVR microcontroller with a GSM module so that credit could be added by SMS. (Rajput et al., 2018) modelled an Arduino-based prepaid meter using GSM technology. More recent designs add Internet connectivity. (Irianto, 2023)designed a prepaid smart energy meter monitoring system (PreSEMMS) for household use based on IoT, which links measured consumption to a prepaid balance. In many basic designs, however, the meter and the payment mechanism are treated as largely independent components. A connected architecture can instead join the meter, a backend transaction system and a user interface, and this is the approach adopted here. 
+Existing prepaid designs use microcontrollers, displays and communication modules to implement this process. Quazi et al. (2011) built a prepaid meter on an AVR microcontroller with a GSM module so that credit could be added by SMS. Rajput et al. (2018) modelled an Arduino-based prepaid meter using GSM technology. More recent designs add Internet connectivity. Irianto (2023) designed a prepaid smart energy meter monitoring system (PreSEMMS) for household use based on IoT, which links measured consumption to a prepaid balance. In many basic designs, however, the meter and the payment mechanism are treated as largely independent components. A connected architecture can instead join the meter, a backend transaction system and a user interface, and this is the approach adopted here. 
 
 # **2.8 Smart Metering and Advanced Metering Infrastructure** 
 
@@ -230,11 +226,11 @@ network, data-management facilities and applications for utilities or consumers 
 
 The Pay-As-You-Go (PAYGO) prototype adopts a simplified version of this arrangement, comprising an ESP32-based field meter, a communication layer, a backend platform, and a web application. Rather than functioning as a utility-scale Advanced Metering Infrastructure (AMI), the system represents a small-scale Internet of Things (IoT) metering architecture inspired by AMI principles and tailored for a local solar energy application. 
 
-Metering is also relevant to electricity theft and non-technical losses. Smart and prepaid meters have been proposed as ways to reduce theft and tampering (Mohammed et al., 2013; Depuru et al., 2011; T. E et al., 2019). The present project does not implement a theftdetection algorithm and makes no claim to detect theft. Its contribution is that electronic metering, transaction records and remote monitoring give a more traceable link between energy used and payment made. 
+Metering is also relevant to electricity theft and non-technical losses. Smart and prepaid meters have been proposed as ways to reduce theft and tampering (Depuru et al., 2011; Mohammed et al., 2013; Somefun et al., 2019). The present project does not implement a theftdetection algorithm and makes no claim to detect theft. Its contribution is that electronic metering, transaction records and remote monitoring give a more traceable link between energy used and payment made. 
 
 # **2.9 Electrical Energy Measurement** 
 
-Billing in a prepaid system depends on the quantity of electricity consumed, so electrical energy measurement is its technical foundation (Abed, 2020; Varela-Aldas et al., 2022). For a single-phase AC load, the relevant quantities are voltage, current, active power, power factor, frequency and accumulated energy. Active power is given by: 
+Billing in a prepaid system depends on the quantity of electricity consumed, so electrical energy measurement is its technical foundation (Abed and Naser, 2020; Varela-Aldás et al., 2022). For a single-phase AC load, the relevant quantities are voltage, current, active power, power factor, frequency and accumulated energy. Active power is given by: 
 
 
 
@@ -248,7 +244,7 @@ and, for constant power over a period t,
 
 
 
-where energy is standardly expressed in watt-hours (Wh) or kilowatt-hours (kWh) (VarelaAldás et al., 2022; El-Khozondar et al., 2024). Because the energy value computed by the meter determines the rate at which prepaid credit is depleted, measurement inaccuracies translate directly into billing errors. For that reason, the accuracy of the measurement subsystem must be empirically verified rather than assumed. 
+where energy is standardly expressed in watt-hours (Wh) or kilowatt-hours (kWh) (Varela-Aldás et al., 2022; El-Khozondar et al., 2024). Because the energy value computed by the meter determines the rate at which prepaid credit is depleted, measurement inaccuracies translate directly into billing errors. For that reason, the accuracy of the measurement subsystem must be empirically verified rather than assumed. 
 
 # **2.10 PZEM-004T Energy Measurement Module** 
 
@@ -256,7 +252,7 @@ The PZEM-004T is a digital energy-monitoring module designed to measure electric
 
 18 
 
-Several empirical studies have evaluated the measurement accuracy of the PZEM-004T in microcontroller-based monitoring prototypes. Yasa et al. (2023) compared the module against a commercial power meter and reported a voltage error of 0.35% and a power error of 1.26%. Similarly, (Varela-Aldás et al., 2022) benchmarked the sensor against a commercial energy monitor and recorded an active power accuracy within 3% and an active energy accuracy within 2%. In a separate photovoltaic monitoring system developed by (Wibowo et al., 2024), the energy measurement accuracy was 93.92%, while the average accuracy across all monitored electrical parameters reached 96.37%. 
+Several empirical studies have evaluated the measurement accuracy of the PZEM-004T in microcontroller-based monitoring prototypes. Yasa et al. (2023) compared the module against a commercial power meter and reported a voltage error of 0.35% and a power error of 1.26%. Similarly, Varela-Aldás et al. (2022) benchmarked the sensor against a commercial energy monitor and recorded an active power accuracy within 3% and an active energy accuracy within 2%. In a separate photovoltaic monitoring system developed by (Wibowo et al., 2024), the energy measurement accuracy was 93.92%, while the average accuracy across all monitored electrical parameters reached 96.37%. 
 
 Integrating an external measurement module separates high-voltage sensing from the main controller, allowing the ESP32 to receive processed digital readings rather than performing analogue voltage and current measurements itself. Nevertheless, the inclusion of a commercial sensor module does not guarantee the accuracy of the entire prototype. Overall measurement reliability also depends on wiring quality, the current-sensing arrangement, calibration, and operating conditions; consequently, the performance of the completed device must be evaluated experimentally. 
 
@@ -272,7 +268,7 @@ Within the Pay-As-You-Go (PAYGO) meter architecture, the ESP32 serves as the cen
 
 # **2.12 Modbus RTU Communication** 
 
-Modbus is an established industrial communication protocol for exchanging data between electronic devices. Its Remote Terminal Unit (RTU) variant operates over serial communication lines using a master-slave architecture (Urrea and Morales, 2019; VarelaAldás et al., 2022). In the present system, the ESP32 microcontroller operates as the master device, polling electrical measurements from the PZEM-004T slave module through its serial interface and subsequently processing the returned values for prepaid billing and cloud transmission (Abed and Naser, 2020; Varela-Aldás et al., 2022). In an investigation of Modbus-RTU communications for smart metering in building energy management systems, Urrea and Morales (2019) demonstrated that incorporating forward error correction in network segments susceptible to electromagnetic interference improves transmission 
+Modbus is an established industrial communication protocol for exchanging data between electronic devices. Its Remote Terminal Unit (RTU) variant operates over serial communication lines using a master-slave architecture (Urrea and Morales, 2019; Varela-Aldás et al., 2022). In the present system, the ESP32 microcontroller operates as the master device, polling electrical measurements from the PZEM-004T slave module through its serial interface and subsequently processing the returned values for prepaid billing and cloud transmission (Abed and Naser, 2020; Varela-Aldás et al., 2022). In an investigation of Modbus-RTU communications for smart metering in building energy management systems, Urrea and Morales (2019) demonstrated that incorporating forward error correction in network segments susceptible to electromagnetic interference improves transmission 
 
 20 
 
@@ -280,7 +276,7 @@ reliability. Adopting a standardised protocol establishes a well-defined interfa
 
 # **2.13 Internet of Things in Energy Monitoring** 
 
-The Internet of Things (IoT) connects physical devices to communication networks so that they can exchange data and support monitoring or control (El-Khozondar et al., 2024; Rind et al., 2023). A typical IoT energy-monitoring architecture comprises five core components: sensors or measurement devices, a processing unit, a communication network, a backend or cloud service and a user interface. Rind et al. (2023) reviewed smart energy meters from an IoT perspective, treating the meter as a combination of sensing, computing and communication nodes, and identified gaps that include limited use of the full range of available technology and a lack of interdisciplinary design. 
+The Internet of Things (IoT) connects physical devices to communication networks so that they can exchange data and support monitoring or control (Rind et al., 2023; El-Khozondar et al., 2024). A typical IoT energy-monitoring architecture comprises five core components: sensors or measurement devices, a processing unit, a communication network, a backend or cloud service and a user interface. Rind et al. (2023) reviewed smart energy meters from an IoT perspective, treating the meter as a combination of sensing, computing and communication nodes, and identified gaps that include limited use of the full range of available technology and a lack of interdisciplinary design. 
 
 The PAYGO architecture follows this model. The PZEM-004T provides the measurements, the ESP32 processes and sends them, HTTPS transports the messages, the backend stores and processes the information and the web application presents it to users. Monitoring is thereby extended beyond the physical meter into an integrated software system. 
 
@@ -304,7 +300,7 @@ Digital payment systems provide the critical link between financial transactions
 
 # **2.16 Peer-to-Peer Energy Trading** 
 
-Peer-to-peer (P2P) energy trading enables energy producers and consumers, including prosumers, to participate directly in localised energy transactions (Soto et al., 2021; (Baig et al., 2021). In a comprehensive review of the literature, (Soto et al., 2021) identified key research domains encompassing trading platforms, optimisation, game theory, blockchain technology, and market mechanisms. Similarly, (Baig et al., 2021) designed and implemented an open-source Internet of Things (IoT) and blockchain-based P2P trading platform utilising an ESP32-S2 microcontroller, Node-RED, and the Message Queuing Telemetry Transport (MQTT) protocol, with trading activities recorded via a smart contract on a private Ethereum blockchain. Earlier foundational work by (Reddy et al., 2014) examined the integration, control, communication, and metering requirements of renewable energy-based smart grids, including the technical arrangements that facilitate local energy exchange. Rather than attempting to replicate a full decentralised P2P electricity market, the Pay-As-You-Go (PAYGO) platform developed in this study implements a simplified local arrangement in which consumers locate nearby participating suppliers and purchase prepaid energy directly from them. 
+Peer-to-peer (P2P) energy trading enables energy producers and consumers, including prosumers, to participate directly in localised energy transactions (Soto et al., 2021; (Baig et al., 2021). In a comprehensive review of the literature, Soto et al. (2021) identified key research domains encompassing trading platforms, optimisation, game theory, blockchain technology, and market mechanisms. Similarly, Baig et al. (2021) designed and implemented an open-source Internet of Things (IoT) and blockchain-based P2P trading platform utilising an ESP32-S2 microcontroller, Node-RED, and the Message Queuing Telemetry Transport (MQTT) protocol, with trading activities recorded via a smart contract on a private Ethereum blockchain. Earlier foundational work by Reddy et al. (2014) examined the integration, control, communication, and metering requirements of renewable energy-based smart grids, including the technical arrangements that facilitate local energy exchange. Rather than attempting to replicate a full decentralised P2P electricity market, the Pay-As-You-Go (PAYGO) platform developed in this study implements a simplified local arrangement in which consumers locate nearby participating suppliers and purchase prepaid energy directly from them. 
 
 # **2.17 Local Energy Marketplaces** 
 
@@ -320,7 +316,7 @@ Where two locations are given by latitude and longitude, the Haversine formula g
 
 
 
-where _d_ is the distance, _R_ is the radius of the Earth (about 6371 km), _φ_ ₁ and _φ_ ₂ are the latitudes in radians, _Δφ_ is the difference in latitude and _Δλ_ is the difference in longitude. (Yunardi et al., 2024) applied the formula in a geographic information system to search for the nearest sea-freight expedition services, and (Muttaqin et al., 2024) used it to find the closest minimarket. Both applications show its use for proximity-based search. 
+where _d_ is the distance, _R_ is the radius of the Earth (about 6371 km), _φ_ ₁ and _φ_ ₂ are the latitudes in radians, _Δφ_ is the difference in latitude and _Δλ_ is the difference in longitude. Yunardi et al. (2024) applied the formula in a geographic information system to search for the nearest sea-freight expedition services, and Muttaqin et al. (2024) used it to find the closest minimarket. Both applications show its use for proximity-based search. 
 
 In the proposed system the calculated distance is compared with a service radius, and a supplier is eligible for a consumer who is within that radius. This gives a simple way to implement location-aware discovery without a complex optimisation algorithm. The formula measures geographical distance only. It does not show whether a supplier has enough electricity available, and that must be established by other means. 
 
@@ -330,11 +326,11 @@ Distributed Energy Resources (DERs) are small-scale resources located close to w
 
 24 
 
-al., 2023). With distributed generation, electricity no longer flows only from central generators through the network to consumers, because consumers may also produce electricity and supply others. Such participants are called prosumers (Reddy et al., 2014; (Chen et al., 2023). Chen et al. (2023) reviewed the control and optimisation of power grids using smart meter data and pointed to the role of smart meters in supporting DER integration. The PAYGO concept is consistent with this model. A solar owner can act as a supplier and neighbouring households as consumers. The marketplace feature provides a way to find such suppliers, and the metering subsystem provides the measurement needed to account for the energy used. 
+al., 2023). With distributed generation, electricity no longer flows only from central generators through the network to consumers, because consumers may also produce electricity and supply others. Such participants are called prosumers (Reddy et al., 2014; Chen et al., 2023). Chen et al. (2023) reviewed the control and optimisation of power grids using smart meter data and pointed to the role of smart meters in supporting DER integration. The PAYGO concept is consistent with this model. A solar owner can act as a supplier and neighbouring households as consumers. The marketplace feature provides a way to find such suppliers, and the metering subsystem provides the measurement needed to account for the energy used. 
 
 # **2.20 Web-Based Energy Monitoring** 
 
-Web-based platforms give users remote access to data produced by IoT devices. For energy systems, dashboards can show voltage, current, power, energy consumption, balance and transaction history (Manowska et al., 2022); Irianto, 2023) Manowska et al. (2023) used a time-series database. Irianto (2023) used a smartphone application to monitor a prepaid energy meter. A web platform also provides an interface for managing users, devices and transactions, so that users need not interact directly with the embedded device. 
+Web-based platforms give users remote access to data produced by IoT devices. For energy systems, dashboards can show voltage, current, power, energy consumption, balance and transaction history (Manowska et al., 2023; Irianto, 2023). Manowska et al. (2023) used a time-series database. Irianto (2023) used a smartphone application to monitor a prepaid energy meter. A web platform also provides an interface for managing users, devices and transactions, so that users need not interact directly with the embedded device. 
 
 The proposed system uses a web application for these purposes. The web platform is the part of the architecture that users interact with, while the embedded device remains responsible for physical measurement and load control. 
 
@@ -367,13 +363,13 @@ Table 2.2 Selected related systems and their relationship to the PAYGO platform
 |**Study**|**Approach**|**What it achieved**|**Aspect addressed**<br>**differently by PAYGO**|
 |---|---|---|---|
 |Irianto (2023)|IoT-based prepaid smart<br>energy meter for<br>household use (Pre-<br>SEMMS)|Linked measured<br>consumption to a prepaid<br>balance|Household meter; PAYGO<br>adds backend transactions,<br>digital payment and supplier<br>discovery|
-|Rajput et al.<br>(2018); Quazi et<br>al. (2014)|Arduino or AVR meters<br>with GSM-based prepaid<br>recharge|Showed that prepaid recharge<br>by mobile messaging is<br>feasible|SMS-based; PAYGO uses<br>Wi-Fi, HTTPS and online<br>payment with a web platform|
-|Mohammad et<br>al. (2013)|Prepaid meter with PIN<br>scratch-card recharge by<br>SMS|Low-cost recharge without<br>Internet connectivity|No remote monitoring or<br>location-aware discovery|
+|Rajput et al.<br>(2018); Quazi et<br>al. (2011)|Arduino or AVR meters<br>with GSM-based prepaid<br>recharge|Showed that prepaid recharge<br>by mobile messaging is<br>feasible|SMS-based; PAYGO uses<br>Wi-Fi, HTTPS and online<br>payment with a web platform|
+|Mohammed et al.<br>(2013)|Prepaid meter with PIN<br>scratch-card recharge by<br>SMS|Low-cost recharge without<br>Internet connectivity|No remote monitoring or<br>location-aware discovery|
 |Baig et al.<br>(2021)|IoT and blockchain P2P<br>energy trading using<br>ESP32-S2, Node-RED and<br>MQTT|Recorded trading activity on<br>a private blockchain with<br>smart contracts|Focus on trading records;<br>PAYGO focuses on prepaid<br>metering, load control and<br>distance-based discovery<br>without a blockchain|
 
 
 
-(Wibowo et al., 2024) and (Yasa et al., 2023) show that the PZEM-004T and low-cost microcontrollers can measure and report electrical parameters with useful accuracy. Their systems record and display consumption. The present project extends the measurement concept to prepaid consumption, so that measured energy reduces a credit balance and the load is disconnected when the credit is exhausted.(Irianto, 2023) combined prepaid credit with IoT monitoring in a household meter. The PAYGO platform places a similar function inside a platform with payment confirmation and a link between suppliers and consumers. The GSM-based prepaid meters of(Quazi et al., 2011) and (Rajput et al., 2018) and the SMS recharge system of Mohammad et al. (2013) rely on mobile messaging for communication and recharge. This is a valid approach, especially where Internet access is limited. The proposed system instead uses Wi-Fi, HTTPS messaging and a payment service. The two approaches make different trade-offs and neither is shown here to be superior. (Baig et al., 2021) address energy exchange between prosumers using a blockchain ledger, whereas the 
+Yasa et al. (2023) and Wibowo et al. (2024) show that the PZEM-004T and low-cost microcontrollers can measure and report electrical parameters with useful accuracy. Their systems record and display consumption. The present project extends the measurement concept to prepaid consumption, so that measured energy reduces a credit balance and the load is disconnected when the credit is exhausted. Irianto (2023) combined prepaid credit with IoT monitoring in a household meter. The PAYGO platform places a similar function inside a platform with payment confirmation and a link between suppliers and consumers. The GSM-based prepaid meters described by Quazi et al. (2011) and Rajput et al. (2018), together with the SMS recharge system described by Mohammed et al. (2013), rely on mobile messaging for communication and recharge. This is a valid approach, especially where Internet access is limited. The proposed system instead uses Wi-Fi, HTTPS messaging and a payment service. The two approaches make different trade-offs and neither is shown here to be superior. Baig et al. (2021) address energy exchange between prosumers using a blockchain ledger, whereas the 
 
 27 
 
@@ -477,7 +473,7 @@ The presentation layer is a Next.js web application. It communicates with the ba
 
 # **Hardware components** 
 
-The meter is built around the following components, which are shown in Figure 3.2. The ESP32 is the main embedded controller. It reads the measurements, keeps the prepaid balance, controls the relay and communicates with the backend over Wi-Fi. The PZEM-004T is the AC measurement module and supplies voltage, current, active power, energy, frequency and power factor through a serial interface (Abed, 2020). A relay switches the connected load on and off under the control of the ESP32. A local display shows information to the user, and a low-voltage DC supply powers the electronics. 
+The meter is built around the following components, which are shown in Figure 3.2. The ESP32 is the main embedded controller. It reads the measurements, keeps the prepaid balance, controls the relay and communicates with the backend over Wi-Fi. The PZEM-004T is the AC measurement module and supplies voltage, current, active power, energy, frequency and power factor through a serial interface (Abed and Naser, 2020). A relay switches the connected load on and off under the control of the ESP32. A local display shows information to the user, and a low-voltage DC supply powers the electronics. 
 
 # **Electrical arrangement** 
 
@@ -511,7 +507,7 @@ Figure 3.4 A picture of the assembled hardware
 
 # **Electrical energy measurement** 
 
-The ESP32 requests measurements from the PZEM-004T over its UART interface using the Modbus-RTU protocol (Abed, 2020). Active power, energy and the related quantities follow Equations (2.1) to (2.3). The accumulated energy is converted to kilowatt-hours for the billing process. The measurement observations are discussed in Chapter Four. A calibrated reference instrument was not available, so measurement accuracy is not established. 
+The ESP32 requests measurements from the PZEM-004T over its UART interface using the Modbus-RTU protocol (Abed and Naser, 2020). Active power, energy and the related quantities follow Equations (2.1) to (2.3). The accumulated energy is converted to kilowatt-hours for the billing process. The measurement observations are discussed in Chapter Four. A calibrated reference instrument was not available, so measurement accuracy is not established. 
 
 # **3.6 Embedded Firmware Design**
 
@@ -814,7 +810,7 @@ DEPURU, S. S. S. R., WANG, L. and DEVABHAKTUNI, V. (2011). Electricity theft: Ov
 
 EL-KHOZONDAR, H. J., MTAIR, S. Y., QOFFA, K. O., QASEM, O. I., MUNYARAWI, A. H., NASSAR, Y. F. et al. (2024). A smart energy monitoring system using ESP32 microcontroller. *e-Prime – Advances in Electrical Engineering, Electronics and Energy*, 9, 100666. https://doi.org/10.1016/j.prime.2024.100666
 
-FEDERAL REPUBLIC OF NIGERIA (2023). *Electricity Act 2023*. Abuja, Nigeria: Federal Government Printer. Available at: https://placng.org
+FEDERAL REPUBLIC OF NIGERIA (2023). *Electricity Act 2023*. Abuja, Nigeria: Federal Government Printer. Available at: https://power.gov.ng/download/electricity-act-2023/
 
 IRIANTO, K. D. (2023). Pre-SEMMS: A design of prepaid smart energy meter monitoring system for household uses based on Internet of Things. *Journal of Electronics, Electromedical Engineering, and Medical Informatics*, 5(2), 69–74. https://doi.org/10.35882/jeeemi.v5i2.282
 
@@ -822,7 +818,7 @@ JACK, K. and SMITH, G. (2020). Charging ahead: Prepaid metering, electricity use
 
 JORDAN, D. C. and KURTZ, S. R. (2013). Photovoltaic degradation rates—an analytical review. *Progress in Photovoltaics: Research and Applications*, 21(1), 12–29. https://doi.org/10.1002/pip.1182
 
-MANOWSKA, A., WYCISK, A., NOWROT, A. and PIELOT, J. (2022). The use of the MQTT protocol in measurement, monitoring and control systems as part of the implementation of energy management systems. *Electronics*, 12(1), 17. https://doi.org/10.3390/electronics12010017
+MANOWSKA, A., WYCISK, A., NOWROT, A. and PIELOT, J. (2023). The use of the MQTT protocol in measurement, monitoring and control systems as part of the implementation of energy management systems. *Electronics*, 12(1), 17. https://doi.org/10.3390/electronics12010017
 
 MERGULHÃO, V. P., CAPRA, L. and PARIKH, P. (2026). Solar home system payment patterns show intermittent access and late-term defaults in pay-as-you-go contracts. *Communications Sustainability*, 1(1), 150. https://doi.org/10.1038/s44458-026-00121-y
 
@@ -832,7 +828,7 @@ MONYEI, C. G., ADEWUMI, A. O., OBOLO, M. O. and SAJOU, B. (2018). Nigeria’s en
 
 MUTTAQIN, A., MURTOPO, A. A., SYEFUDIN, S. and GUNAWAN, G. (2024). Application of the Haversine formula method to determine the closest distance to a minimarket. *Jurnal Mandiri IT*, 13(1), 72–80. https://doi.org/10.35335/mandiri.v13i1.293
 
-NIGERIAN ELECTRICITY REGULATORY COMMISSION (2026). *Mini-Grid Regulations, 2026*. Available at: https://nerc.gov.ng
+NIGERIAN ELECTRICITY REGULATORY COMMISSION (2026). *Mini-Grid Regulations, 2026*. Available at: https://nerc.gov.ng/wp-content/uploads/2026/04/Mini-Grid-Regulations-2026.pdf
 
 NUMMINEN, S. and LUND, P. D. (2019). Evaluation of the reliability of solar micro-grids in emerging markets—issues and solutions. *Energy for Sustainable Development*, 48, 34–42. https://doi.org/10.1016/j.esd.2018.10.006
 
@@ -842,7 +838,7 @@ OLADIGBOLU, J. O., RAMLI, M. A. M. and AL-TURKI, Y. A. (2020). Optimal design of
 
 OLATOMIWA, L., MEKHILEF, S., SHAMSHIRBAND, S. and PETKOVIĆ, D. (2015). Adaptive neuro-fuzzy approach for solar radiation prediction in Nigeria. *Renewable and Sustainable Energy Reviews*, 51, 1784–1791. https://doi.org/10.1016/j.rser.2015.05.068
 
-QUAZI, I., GUPTA, S. K. and PRASAD, R. (2011). Pre-paid energy meter based on AVR microcontroller. Available at: https://api.semanticscholar.org/CorpusID:13446326
+QUAZI, I., GUPTA, S. K. and PRASAD, R. (2011). Pre-paid energy meter based on AVR microcontroller. *International Journal of Engineering Research and Applications*, 1(4), 1879–1884. Available at: https://www.ijera.com/papers/Vol%201%20issue%204/CK01418791884.pdf
 
 RAJPUT, U. A., RAFIQUE, K., SATTAR, A., SHAIKH, M. and TARIQUE, M. (2018). Modeling of Arduino-based prepaid energy meter using GSM technology. *International Journal of Advanced Computer Science and Applications*, 9(5). https://doi.org/10.14569/IJACSA.2018.090558
 
@@ -854,13 +850,14 @@ RIND, Y. M., RAZA, M. H., ZUBAIR, M., MEHMOOD, M. Q. and MASSOUD, Y. (2023). Sma
 
 ROLFFS, P., OCKWELL, D. and BYRNE, R. (2015). Beyond technology and finance: Pay-as-you-go sustainable energy access and theories of social change. *Environment and Planning A: Economy and Space*, 47(12), 2609–2627. https://doi.org/10.1177/0308518X15615368
 
+SOMEFUN, T. E., AWOSOPE, C. O. A. and CHIAGORO, A. (2019). Smart prepaid energy metering system to detect energy theft with facility for real time monitoring. *International Journal of Electrical and Computer Engineering*, 9(5), 4184–4191. https://doi.org/10.11591/ijece.v9i5.pp4184-4191
+
 SOTO, E. A., BOSMAN, L. B., WOLLEGA, E. and LEON-SALAS, W. D. (2021). Peer-to-peer energy trading: A review of the literature. *Applied Energy*, 283, 116268. https://doi.org/10.1016/j.apenergy.2020.116268
 
 SOYEMI, A. O., SAMUEL, I. A., AYOBAMI, A. A. O. and AKINMEJI, A. (2021). The challenges of estimated billing on electricity consumers in Nigeria: A review. *IOP Conference Series: Earth and Environmental Science*, 730(1), 012025. https://doi.org/10.1088/1755-1315/730/1/012025
 
 STRAUB-MÜCK, M., GEYER-KLINGEBERG, J. and RATHGEBER, A. W. (2025). Determinants of the long-term degradation rate of photovoltaic modules: A meta-analysis. *Renewable and Sustainable Energy Reviews*, 216, 115697. https://doi.org/10.1016/j.rser.2025.115697
 
-T. E., S., C. O. A., A. and A., C. (2019). Smart prepaid energy metering system to detect energy theft with facility for real time monitoring. *International Journal of Electrical and Computer Engineering (IJECE)*, 9(5), 4184. https://doi.org/10.11591/ijece.v9i5.pp4184-4191
 
 URREA, C. and MORALES, C. (2019). Enhancing Modbus-RTU communications for smart metering in building energy management systems. *Security and Communication Networks*, 2019, 1–8. https://doi.org/10.1155/2019/7010717
 
