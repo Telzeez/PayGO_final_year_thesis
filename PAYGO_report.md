@@ -50,37 +50,29 @@ The problem addressed by this project is therefore the lack of an integrated and
 
 5 
 
-# **1.3 Aim and Objectives** 
+# **1.3 Aim and Objectives**
 
-# **Aim** 
+# **Aim**
 
-The aim of this project is to design and construct a smart prepaid solar energy metering and billing platform for small-scale residential energy sharing, integrating electrical energy measurement, prepaid credit management, automated load control, IoT communication, digital payment and location-aware energy discovery. 
+The aim of this project is to design and implement a smart prepaid energy metering and billing platform for small-scale distributed energy applications, integrating electrical energy measurement, local prepaid balance management, automated load control, secure device-to-server communication, digital payment processing and a location-aware energy marketplace.
 
-The specific objectives of the project are to: 
+The specific objectives are to:
 
-1. Design and implement an embedded prepaid smart metering unit using the PZEM-004T sensor module, ESP32 microcontroller, and automated relay control to measure single-phase electrical parameters, deduct consumed energy credit in real time, and automatically disconnect or reconnect the load based on available balance. 
+1. Design and implement an embedded prepaid metering unit using the PZEM-004T module and ESP32 microcontroller to measure single-phase AC electrical parameters, calculate energy consumption and maintain a local prepaid balance.
+2. Implement relay-based load control and HTTPS communication between the embedded meter and backend for device heartbeat and prepaid balance synchronisation.
+3. Develop a web-based platform for user and device management, digital payment processing, transaction records, consumption reporting and CSV export.
+4. Implement a location-aware energy marketplace that identifies available listings according to geographical distance and the service radius of each energy listing.
+5. Evaluate the integrated prototype through functional hardware, firmware, backend and web-application tests.
 
-2. Establish bidirectional wireless communication between the embedded metering device and a cloud backend to transmit real-time energy consumption data and execute authorised remote control commands. 
+# **1.4 Significance of the Study**
 
-3. Develop a web-based energy management and location-aware marketplace platform that supports digital credit recharge, user and transaction management, energy data visualisation, and identification of nearby listed energy sources using geographical coordinates and the Haversine formula. 
+This study demonstrates how embedded metering, prepaid balance management and web-based software can be combined to support energy management in small-scale distributed energy applications. The prototype provides a practical engineering example of measuring electricity consumption, maintaining a prepaid balance and controlling a connected load.
 
-4. Evaluate the integrated system through component-level, integration, and operational testing to validate its metering accuracy, prepaid billing, load switching, communication reliability, and web platform performance 
+For owners of small solar installations, a platform of this type could support more transparent accounting when energy is supplied to another user within a residential compound. Consumption-based records may also help owners estimate energy use and plan for system operation and maintenance. These are potential applications of the design; the prototype has not been deployed as a commercial energy service and does not establish financial returns.
 
-6 
+For consumers, the system provides a prepaid model in which the available energy balance is displayed locally and can be viewed through the web application. Consumption records and transaction history are intended to improve transparency between energy supply and use.
 
-# **1.4 Significance of the Study** 
-
-The significance of this study lies in its contribution to embedded energy management, prepaid electricity access, and the sustainable utilization of small-scale solar installations. The research is justified by the growing need for efficient management of decentralized renewable energy systems, particularly in enabling small-scale solar owners to systematically recover operational and maintenance costs through metered energy sharing. For solar energy system owners, the Pay-As-You-Go (PAYGO) architecture provides a reliable mechanism for measuring, recording, and billing electricity supplied to third-party consumers based on actual consumption. By establishing an automated, consumption-based revenue model, the system generates financial returns that help offset battery replacement, maintenance, and operating expenses, thereby promoting the long-term sustainability of decentralized solar installations. 
-
-For electricity consumers, the platform offers a transparent prepaid model in which energy access is directly tied to an active credit balance. Real-time tracking of energy consumption and remaining credit promotes conscious energy usage while ensuring fair, verifiable billing based on accurately recorded kilowatt-hour (kWh) consumption. 
-
-For engineering practice, this project demonstrates the end-to-end integration of electrical parameter sensing, embedded control, relay-based load switching, Internet of Things (IoT) telemetry, digital payment processing, and web-based monitoring within a unified prototype. Utilizing an ESP32 microcontroller alongside a PZEM-004T energy monitoring module provides a cost-effective framework for automated prepaid load control. Furthermore, incorporating a location-aware software marketplace establishes a practical testbed for 
-
-7 
-
-evaluating the technical requirements of localized energy discovery and small-scale energy distribution. 
-
-For future research, the developed prototype serves as a foundational platform for advancing studies in smart metering, decentralized peer-to-peer (P2P) energy trading, cryptographic device security, automated payment gateways, and the regulatory frameworks governing local microgrids. 
+From an engineering perspective, the project integrates an ESP32 microcontroller, a PZEM-004T measurement module, relay-based load control, HTTPS communication, a PostgreSQL database, a payment gateway and a web application. It also provides a software implementation of location-based energy listing discovery. The prototype can serve as a basis for further work on distributed energy management and smart metering.
 
 # **1.5 Scope of the Work** 
 
@@ -448,51 +440,38 @@ Following parallel development, the two subsystems were integrated and tested in
 
 29 
 
-# **3.3 System Requirements** 
+# **3.3 System Requirements**
 
-The requirements were derived from the objectives of the project and the intended use in a small solar energy-sharing setting. They are summarised in Table 3.1. 
+The system requirements were derived from the project objectives and intended use in a small-scale distributed energy setting.
 
-Table 3.1 Functional and non-functional requirements of the PAYGO system 
+**Table 3.1 Functional and non-functional requirements**
 
-|**Type**|**Requirement**|
+| Type | Requirement |
 |---|---|
-|Functional|Register and authenticate users; register and manage metering devices;<br>measure the AC energy consumed by the connected load; maintain the|
-||available energy balance of each device; control the load according to<br>that balance.|
-|Functional|Accept digital payments; convert each verified payment into energy<br>credit; record every transaction; send the credit to the physical meter and<br>confirm that the meter accepted it; retry credit operations that could not|
-||be delivered.|
-|Functional|Monitor whether each device is online; present transaction information to<br>users.|
-|Functional|Allow energy owners to list available energy; find listings near a buyer|
-||using geographical distance; process purchases from listings.|
+| Functional | Measure single-phase AC voltage, current, active power, frequency, power factor and cumulative energy using the PZEM-004T. |
+| Functional | Calculate energy consumption and maintain the prepaid balance locally on the ESP32. |
+| Functional | Control the connected load using a relay according to the available prepaid balance. |
+| Functional | Display meter information locally and preserve essential balance information across power interruptions. |
+| Functional | Communicate with the backend over HTTPS for device heartbeat and balance synchronisation. |
+| Functional | Process digital payments through the backend and record verified payment transactions. |
+| Functional | Provide user and device management, transaction history, consumption summaries and CSV export through the web application. |
+| Functional | Support location-based discovery of energy listings using geographical coordinates and configured service radii. |
+| Non-functional | Protect authenticated operations and verify payment notifications. |
+| Non-functional | Prevent duplicate payment processing and maintain consistency between server-side and local prepaid balances. |
+| Non-functional | Support local metering and balance operation during temporary network unavailability, followed by synchronisation when connectivity returns. |
+| Non-functional | Provide modular software and a responsive web interface. |
 
+# **3.4 Overall System Architecture**
 
+The PAYGO architecture consists of an embedded metering unit, a communication interface, a backend service, a database, external payment processing and a web application. The ESP32 forms the embedded control layer and interfaces with the PZEM-004T module, relay and local display. The PZEM-004T provides electrical measurements to the ESP32 through a UART connection using Modbus RTU.
 
-30 
+The embedded device communicates with the backend through HTTPS over Wi-Fi. Device communication is used for heartbeat reporting and prepaid balance synchronisation. The firmware performs local energy accounting and load control; it does not rely on an MQTT credit command or a physical transaction-acknowledgement message.
 
-|**Type**|**Requirement**|
-|---|---|
-|Non-functional|Transaction integrity and prevention of duplicate processing; verification|
-||of payment notifications; reliable device communication; separation of|
-||money from energy quantities; modular and maintainable software;|
-||usability on mobile and desktop devices.|
+The backend is implemented using Node.js, Express and TypeScript. It provides REST API routes for authentication, device operations, payment processing, transactions and marketplace functions. PostgreSQL stores device balances, payment transactions and consumption readings. Paystack is used as the external payment service.
 
+The presentation layer is a Next.js web application. It communicates with the backend through its REST API and provides account access, device information, payments, transaction history, consumption reporting and marketplace functions. The web application does not connect directly to the meter or database.
 
-
-# **3.4 Overall System Architecture** 
-
-The architecture is shown in Figure 3.1. It has a physical and device layer, a communication layer, a backend layer, a data and external-services layer and a presentation layer. 
-
-31 
-
-
-
-<!-- Start of picture text -->
-Next.js web application<br>(PWA)<br>{ HTTPS REST API<br>Express / TypeScript backend<br>PAYGO meter Authentication<br>ESP32 firmware HTIPS over Wi-Fi Devices and balances<br>(device API) .<br>PZEM-004T measurement Payments and transactions<br>Prepaid balance Marketplace<br>Relay load control<br>Displayi heartbeat,‘acknowledgementbalance sync,<br>SQL API +fo<br>_<br><!-- End of picture text -->
-
-Figure 3.1 Architecture of the PAYGO system The device layer is the PAYGO meter, which contains the ESP32 controller, the PZEM-004T measurement module, the relay and a display. The meter is placed downstream of the owner’s solar system, so it measures only the AC electricity delivered to the consumer’s load. The communication layer uses HTTPS between the meter and the backend. The device API carries the heartbeat, the synchronisation of the device balance and the other device operations, such as acknowledgements, energy reports, and retrieval of the device profile. 
-
-32 
-
-The backend is built with Node.js, Express and TypeScript. It coordinates authentication, devices, payments, transactions, the marketplace and device communication. It stores its records in a PostgreSQL database and works with two external services: Paystack for payments. The presentation layer is a Next.js progressive web application. It communicates only with the backend through its REST API and never connects directly to the database, or the meter. 
+**Figure 3.1** should illustrate the actual data flow: PZEM-004T measurements to ESP32; local balance and relay control on the ESP32; HTTPS heartbeat and balance synchronisation between ESP32 and Express backend; PostgreSQL persistence; Paystack payment notification to the backend; and the Next.js application communicating with the backend through the REST API.
 
 # **3.5 Hardware Design and Implementation** 
 
@@ -534,162 +513,278 @@ Figure 3.4 A picture of the assembled hardware
 
 The ESP32 requests measurements from the PZEM-004T over its UART interface using the Modbus-RTU protocol (Abed, 2020). Active power, energy and the related quantities follow Equations (2.1) to (2.3). The accumulated energy is converted to kilowatt-hours for the billing process. The accuracy of the measurements is not assumed and is evaluated against a reference instrument as described in Section 3.13. 
 
-# **3.6 Embedded Firmware Design** 
+# **3.6 Embedded Firmware Design**
 
-The firmware runs on the ESP32 and performs five tasks. It reads the PZEM-004T, maintains the local energy balance, controls the relay, handles credit commands from the backend and 
+The embedded firmware runs on the ESP32 and performs electrical measurement acquisition, energy accounting, local balance management, relay control, display updates and backend communication.
 
-36 
+The ESP32 obtains voltage, current, active power, cumulative energy, frequency and power-factor measurements from the PZEM-004T through its UART interface using Modbus RTU. Energy consumed over an interval is determined from the change in the cumulative energy reading. The resulting consumption is used to update the local prepaid balance.
 
-communicates with the backend. Each meter has a unique device identifier, device_id, which the backend uses to link the meter to its balance, transactions and connection status. 
+The balance is maintained locally and persisted using ESP32 Preferences storage. The relay is controlled according to the local prepaid balance, while the display presents relevant meter and balance information. A low-balance buzzer function is also implemented in the firmware.
 
-The meter holds the available energy balance in kilowatt-hours. When energy is consumed it is deducted locally, and when credit is received it is added. The new balance is: 
+The firmware communicates with the backend over HTTPS. It periodically sends a heartbeat and synchronises its balance with the server. When connectivity is unavailable, local metering and balance control can continue; synchronisation takes place when communication is restored.
 
+The balance relationship is:
 
+\[
+B_{new}=B_{previous}+E_{credited}-E_{consumed}
+\]
 
-where _Bnew_ is the new balance, _B prev_ is the previous balance, _E purchased_ is newly purchased energy and _Econsumed_ is the measured consumption. The relay follows the balance: the load is on while credit is available and is switched off when the balance is exhausted. 
+where the balance and energy quantities are expressed in kilowatt-hours (kWh).
 
-When a credit instruction is received, the firmware checks that it is valid and whether its transaction identifier has already been processed. A transaction that has already been processed is not credited again. Otherwise the credit is applied and an acknowledgement is returned to the backend. The firmware also sends a regular heartbeat to the backend over HTTPS and reports the remaining balance so that the backend and the web application show the current state of the meter. 
+# **3.7 Backend Design and Implementation**
 
-# **3.7 Backend Design and Implementation** 
+The backend is implemented using Node.js, Express 5 and TypeScript. It provides the REST API used by the web application and the HTTPS endpoints used by the embedded meter. The application is organised into routes, middleware and service modules to separate request handling, authentication and business logic.
 
-The backend uses Express 5 with TypeScript on Node.js and connects to PostgreSQL through the pg connection pool. The code is organised into routes, middleware, services and supporting modules, so that request handling is separate from business logic and from communication with other systems. The API has separate route groups for authentication, payments, the Paystack webhook, devices, transactions and the marketplace. 
+The backend includes routes for user authentication, device operations, payment initiation, Paystack webhook processing, transaction records and marketplace operations. Authentication middleware and role-based checks protect applicable user operations.
 
-Authentication is provided by dedicated routes for registration, login, retrieval of the signedin user and logout. An authentication middleware and role guards protect the device, 
+PostgreSQL is used for persistent storage. Device records contain identifiers, balance information and connection-related timestamps. Payment transactions store payment references and monetary and energy-credit information. Consumption readings are stored separately in the `meter_readings` table. The production migration `20261119_multi_device_metering.sql` introduced the multi-device metering and consumption-reading structure. A database trigger routes consumption records generated through balance synchronisation into `meter_readings`, allowing reporting to aggregate consumption independently of financial top-up transactions.
 
-37 
+The backend provides consumption-reporting endpoints that aggregate recorded kilowatt-hour values over supported periods. The web application uses these endpoints to display consumption summaries and generate CSV exports.
 
-transaction and marketplace operations, so that they cannot be performed without a valid authenticated user. 
+# **3.8 Payment and Prepaid Credit Management**
 
-PostgreSQL stores the persistent records. The devices table holds the device identifier, the current balance in kilowatt-hours, the connection status, the time the device was last seen and the time of the last balance update. The transactions table is the authoritative record of payments, energy quantities and hardware execution. It holds the transaction type, the amount paid in naira, the energy in kilowatt-hours, an internal transaction identifier, the Paystack reference, the hardware status, a retry count, the time of the last attempt and a timestamp. Further tables hold the marketplace records. 
+The payment process begins when a user initiates a top-up from the web application. The application sends the request to the Express backend, which initialises the payment with Paystack and returns payment information to the user interface.
 
-# **3.8 Payment and Prepaid Credit Management** 
+After payment, Paystack sends a notification to the backend webhook. The backend verifies the notification using HMAC-SHA512 signature validation before processing it. Payment references and database constraints support duplicate-event prevention. The amount paid in naira is stored separately from the energy quantity credited in kilowatt-hours.
 
-The payment and recharge workflow is shown in Figure 3.5. It runs from payment initiation, through Paystack and verification of the webhook, to a database transaction, the energycredit calculation, the credit command to the meter and the acknowledgement from the meter. 
+The energy equivalent of a verified payment is determined using:
 
-38 
+\[
+E_{credit}=\frac{A}{p}
+\]
 
+where \(E_{credit}\) is the energy credit in kWh, \(A\) is the payment amount in naira and \(p\) is the configured tariff in naira per kWh.
 
+Following successful payment verification, the backend updates the server-side device balance and records the top-up transaction. The embedded meter obtains the authoritative balance through its HTTPS heartbeat and balance-synchronisation process. The firmware then synchronises its local balance with the server-side value.
 
-<!-- Start of picture text -->
-webBuyer/app Backend Paystack PostgreSQL ESP32meter<br>1. initiate payment | H i<br>om | H H<br>| ainiise | 1<br>—— H<br>| 3.signed webhook | H<br>itm ——— H<br>4. verify HMAC-SHAS12;| i H<br>check unique reference Hl i<br>' 5. commit credit and record '<br>rr<br>' 6. credit command (TXN id, kWh)<br>H ' Hl 7. skip if TXN processed;<br>i i i apply credit<br>' | B.acknowledgement |<br>i¢ T T<br>' 9, hardware_status = CONFIRMED '<br>ee ll<br><!-- End of picture text -->
+This implementation should not be described as an MQTT credit-command workflow. The firmware does not subscribe to the backend MQTT credit topic. A backend transaction status must not be presented as proof that the physical meter returned a transaction-specific acknowledgement.
 
-Figure 3.5 Sequence of payment, credit allocation and hardware acknowledgement 
+**Figure 3.5** should show: web application initiates payment; backend initialises payment with Paystack; Paystack sends a signed webhook; backend verifies the signature and payment reference; backend records the top-up and updates the server-side balance; ESP32 sends an HTTPS heartbeat; backend returns the authoritative balance; and ESP32 synchronises its local balance.
 
-The user starts a payment from the web application, which calls the payment route of the backend. The backend initialises the transaction with Paystack and returns the payment details to the application. When the payment is completed, Paystack sends a notification to the webhook endpoint of the backend. 
+# **3.10 Local Energy Marketplace**
 
-Several design decisions protect the integrity of this process. The first is verification of the webhook. The backend reads the raw request body and validates the HMAC-SHA512 
+The marketplace allows a prosumer to publish an energy listing and a buyer to discover listings that may serve the buyer's location. A user account can support both buyer and prosumer capabilities. An energy source represents the supplier's registered source, while an energy listing represents the energy quantity and terms offered through the marketplace.
 
-39 
+At purchase time, the buyer supplies a location. The backend compares this location with the coordinates associated with available listings and evaluates whether the buyer falls within each listing's configured service radius. Geographic distance is calculated using the Haversine formula.
 
-signature before it processes the event, so that a fabricated payment notification is rejected. The second is idempotency. A webhook may be delivered more than once, so the reference field of the transactions table carries a unique constraint, and an event whose reference is already recorded is ignored. The third is the separation of money from energy. The amount paid in naira and the energy purchased in kilowatt-hours are stored in separate fields. The energy credited for a payment is: 
+The distance calculation supports location-based discovery; it does not independently verify physical energy availability or guarantee delivery. The marketplace is a prototype software feature and is not a regulated electricity-market settlement or dispatch system.
 
+# **3.11 Web Application Design**
 
+The user interface is implemented as a Next.js progressive web application and is accessible through mobile and desktop browsers. It communicates with the Express backend through REST API requests and does not connect directly to the PostgreSQL database or communicate directly with the meter.
 
-where _EkWh_ is the energy in kilowatt-hours, _A_ is the amount paid in naira and _p_ is the configured price per kilowatt-hour. Keeping the two quantities apart prevents a monetary amount from being mistaken for an energy quantity, and allows the tariff to change without changing the measurement subsystem. 
+The application supports user authentication, device and balance information, payment initiation, transaction history and marketplace functions. Its consumption-reporting interface retrieves aggregated readings from the backend and supports period selection and CSV export. The exported consumption data contains date-based energy values in kWh; it is not a historical export of raw voltage, current, active-power or frequency samples.
 
-A verified payment is handled in one database transaction. The transaction adds the energy to the device balance, records the payment with an internal transaction identifier of the form TXN_XXXXXXXX and a hardware status of PENDING. Only after this transaction has been committed does the backend send the credit command to the meter. The database is therefore the primary record of the payment, and the command to the meter is not. The transaction identifier is carried in the command and returned in the acknowledgement, which links the payment, the database record and the hardware operation. 
+# **3.12 System Integration**
 
-The hardware status separates the success of the payment from the success of the physical credit. Its three states are described in Table 3.2. 
+System integration was carried out across the embedded hardware, firmware, backend, database, payment service and web application. The PZEM-004T and ESP32 form the measurement and control unit. The firmware performs local energy accounting and relay control, while HTTPS provides the communication path for heartbeat and balance synchronisation.
 
-40 
+The backend provides the application API and stores device, payment and consumption records in PostgreSQL. Paystack is integrated for payment processing. The Next.js web application accesses these services through the backend REST API and provides the user-facing functions, including consumption reporting and CSV export.
 
-Table 3.2 Hardware execution states of a credit transaction 
+The production database migration for multi-device metering and consumption readings was applied. Consumption records are stored in `meter_readings` and made available to the reporting endpoint. The integration was evaluated using the functional observations and results presented in Chapter Four.
 
-|**State**|**Meaning**|
-|---|---|
-|PENDING|The payment and credit transaction exist but the meter has not yet<br>confirmed the credit.|
-|CONFIRMED|The ESP32 has acknowledged that the credit was processed.|
-|FAILED|The hardware credit operation did not succeed after the defined retry<br>conditions.|
+**Table 3.3 Test plan and evaluation status**
 
-
-
-# **3.9 Device Communication and Remote Recharge** 
-
-A credit command tells the meter how much energy to add and carries the transaction identifier. The meter acts on it as described in Section 3.6 and returns an acknowledgement. When the backend receives the acknowledgement, it changes the hardware status of the transaction from PENDING to CONFIRMED. The backend records a device as ONLINE or OFFLINE according to the heartbeat messages it receives, and updates the last-seen time when a valid heartbeat arrives. The device API is the HTTPS interface through which the meter reports its heartbeat, balance, energy and acknowledgements and obtains its profile. If the meter is offline, the transaction stays in the PENDING state and is not treated as failed. The backend retries pending credit commands when the device reconnects or sends a heartbeat. A minimum interval, based on the time of the last attempt, prevents repeated retransmission. A transaction becomes FAILED only if the physical credit still does not succeed after the defined retry conditions. 
-
-# **3.10 Local Energy Marketplace** 
-
-The marketplace lets energy owners offer energy and lets buyers find offers near them. An energy source is the supplier’s physical energy resource, while an energy listing is a quantity of energy from that source that is offered for sale. A listing holds the available energy in 
-
-41 
-
-kilowatt-hours, the price per kilowatt-hour, a status of ACTIVE or PAUSED, and a link to its source. Separating the two allows a source to remain registered while its listing is paused. The process is shown in the flow diagram in figure 3.6 below: 
-
-
-
-<!-- Start of picture text -->
-Energy owner registers an energy source<br>Owner publishes a listing<br>(available energy, price, service radius)<br>Buyer supplies a location<br>Backend calculates distance d to each<br>listing using the Haversine formula<br>Isd<r No Listing is<br>Eligible listings(service radius)?are presented to the buyer= excluded<br>makeDoesathepurchase? buyer Ne° End<br>Yes<br>Backend reserves the requested energy<br>using a reserved_kwh lock<br><!-- End of picture text -->
-
-Figure 3.6 Flowchart of the marketplace discovery and purchase process 
-
-42 
-
-_d ≤r_ 
-
-(3.3) 
-
-The distance test shows only that a listing lies within the configured service radius. It does not show that energy is physically available. The available energy of a listing is a figure published by the owner, and the marketplace in this project is a prototype discovery and purchase feature and not an established energy-trading service. 
-
-# **3.11 Web Application Design** 
-
-The user interface is a Next.js progressive web application that can be used on mobile and desktop devices. It sends all requests to the Express REST API and has no direct access to the database. This keeps the interface independent of the way the devices are implemented. The application supports registration and login, the viewing of device information and balance, payment initiation, the transaction history, and the discovery and purchase of marketplace listings. 
-
-# **3.12 System Integration** 
-
-The subsystems are integrated in stages. The ESP32 is first connected to the PZEM-004T and the relay to form the measuring and load-control unit. The firmware is then connected to the backend, with HTTPS for the heartbeat, the balance synchronisation, credit acknowledgements and the other device operations. The backend is next connected to Paystack for payment initiation and webhook processing, and to the database for the persistent records. The web application is connected through the REST API. Finally, the complete workflow is run from payment to the acknowledged credit at the meter, as shown in Figure 3.5. The status of each stage and the problems found are reported in Chapter Four. 
-
-43 
-
-**Table 3.3** Test plan for the PAYGO system 
-
-|**Test**|**Procedure**|**Metric or expected outcome**|
+| Test area | Evaluation approach | Evidence or status |
 |---|---|---|
-|Energy measurement|Connect loads of varying power levels.<br>Record the PZEM-004T readings and the<br>reference instrument readings<br>simultaneously, repeating each<br>measurement.|Percentage error and mean of<br>voltage, current, power and<br>energy readings|
-|Prepaid credit|Add a known amount of energy to the<br>balance, operate a load and observe the<br>balance decrement.|Balance follows Equation (3.1)<br>within measurement error limits|
-|Load control|Operate a load with available credit until the<br>credit is exhausted, then recharge the<br>balance.|Relay remains on while credit is<br>available, switches off when<br>exhausted and switches back on<br>after recharge|
-|Payment processing|Submit valid payment webhook events with<br>a valid signature, alongside events with an<br>invalid signature.|Valid events generate a<br>transaction and the<br>corresponding energy credit;<br>invalid events are rejected|
-|Credit command and<br>acknowledgement|Issue a credit command and observe delivery<br>to the meter and its acknowledgement<br>response.|Transaction status updates from<br>'PENDING' to 'CONFIRMED';<br>confirmation rate calculated via<br>Equation (3.6)|
-|Duplicate prevention|Submit the same payment reference multiple<br>times and resend the same transaction<br>identifier to the meter.|Energy credit is applied once<br>only|
-||Disconnect the meter from the network,|Transaction remains 'PENDING'<br>|
-|Device reconnection|<br>initiate a payment and subsequently<br>reconnect the meter.|while offline and updates to<br>'CONFIRMED' upon<br>reconnection|
-|Marketplace|Create energy sources and listings, supply<br>buyer coordinates inside and outside service<br>radii and attempt concurrent purchases.|Only listings satisfying d ≤ r are<br>returned; reserved energy is not<br>double-sold|
-||Execute the complete sequence from|Payment record, database|
-|Integrated workflow|payment initiation to credit|balance, meter balance and|
-||acknowledgement and load actuation.|device status remain consistent|
+| Electrical measurement response | Observe meter readings under connected loads and compare behaviour as the load changes. | Functional load observations recorded; no calibrated reference meter was available for accuracy testing. |
+| Prepaid balance management | Observe local balance handling and synchronisation with the backend. | Implemented; report only behaviours directly observed during testing. |
+| Relay load control | Test physical load disconnection and reconnection. | Physical cut-off and reconnection test passed. |
+| HTTPS device communication | Check device heartbeat and balance synchronisation. | Implemented in firmware and backend; do not infer unobserved performance metrics. |
+| Payment processing | Verify payment notification handling and server-side balance update. | Paystack verification and processing implemented; no invented transaction values or physical meter acknowledgement. |
+| Consumption storage and reporting | Check database reading storage, reporting endpoint and CSV export. | Production migration applied; CSV export produced a consumption record. |
+| Marketplace | Check location and service-radius matching logic. | Implemented as a prototype software feature. |
+| Integrated operation | Consider combined operation of hardware and software components. | Functional prototype demonstrated; extended field and accuracy testing remain future work. |
 
+# **3.13 Performance Evaluation and Data Analysis**
 
+The evaluation distinguishes direct experimental observations, software-function checks and calculated quantities. The available tests establish functional behaviour of the prototype; they do not constitute a complete calibration exercise.
 
-# **3.13 Performance Evaluation and Data Analysis** 
+For a measured quantity \(X_m\) and corresponding reference quantity \(X_r\), percentage error may be calculated as:
 
-Measurements are analysed using the percentage error and the mean. For a measured 
+\[
+\%E=\frac{|X_m-X_r|}{X_r}\times100
+\]
 
-quantity _X m_ and a reference quantity _X r_ , the percentage error is: 
+For \(n\) repeated observations \(x_i\), the arithmetic mean is:
 
-44 
+\[
+\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i
+\]
 
+A calibrated reference energy meter was not available during the reported tests. Consequently, percentage measurement error and an accuracy result are not reported. The equations are retained as the appropriate method for future comparative testing.
 
+For exported energy records \(E_i\), a total over the selected export period can be calculated as:
 
-and for n repeated observations x_i the mean is: 
+\[
+E_{total}=\sum_{i=1}^{n}E_i
+\]
 
+The available export contains one record of 0.058 kWh dated 21 November 2026. It is reported as an actual exported record and is not extrapolated to represent other days or longer periods.
 
+# **3.14 Security and Reliability Considerations**
 
-The functional tests are judged by whether the expected system state is reached. A remote recharge is successful when the payment is verified, the database is credited, the command is delivered, the acknowledgement is received, the status becomes CONFIRMED and no duplicate credit is created. The share of credit operations that reach the confirmed state is expressed as: 
+The backend verifies Paystack webhook notifications using HMAC-SHA512 signature validation before processing payment events. Payment references and database constraints support idempotent handling of repeated notifications. Authenticated routes and role checks restrict access to protected application operations.
 
+The meter and backend communicate through HTTPS. The firmware maintains local balance information and persists essential state using ESP32 Preferences storage. This supports local operation during temporary network interruption, while heartbeat-based synchronisation allows the device to reconcile its balance with the backend after connectivity is restored.
 
+These mechanisms reduce specific risks associated with unauthorised payment notifications, duplicate payment processing and temporary network loss. They do not constitute a complete cybersecurity assessment or certification of the prototype.
 
-The recovery after reconnection, the handling of duplicates and the identification of listings within a service radius are judged as passed or failed against the outcomes in Table 3.3. 
+# **3.15 Methodological Limitations**
 
-# **3.14 Security and Reliability Considerations** 
+The prototype is a small-scale engineering implementation and is not a certified utility meter. The available electrical observations were obtained using the prototype display and connected test loads. A calibrated reference instrument was not available, so measurement accuracy and percentage error could not be established.
 
-The backend uses several security mechanisms. Payment notifications are verified with HMAC-SHA512 signatures. Protected operations require authentication and role checks. Reliability measures are built into the design. A unique payment reference and a unique transaction identifier prevent duplicate credit at the backend, and the meter independently ignores a transaction it has already processed. The credit is committed to the database before the command is sent. The PENDING, CONFIRMED and FAILED states record what actually happened at the hardware, retries recover credit for meters that were offline, These mechanisms are examined in the tests above. The project does not include a full security audit, and no claim is made beyond the behaviour observed in those tests. 
+The reported load tests were conducted using a single-phase AC supply. The prototype was designed with distributed solar energy applications in mind, but the reported tests do not establish long-term operation on a field-installed solar system. The available CSV evidence contains a limited consumption record and does not establish daily, weekly or monthly consumption trends.
 
-45 
+The marketplace is a software prototype for location-based listing discovery. It does not verify physical energy availability, perform grid dispatch or establish regulatory approval for electricity trading. The evaluation also does not establish long-term component durability, large-scale performance or commercial viability.
 
-# **3.15 Methodological Limitations** 
+These limitations define the extent of the conclusions drawn in Chapter Four and provide areas for further development.
 
-The prototype is small in scale and does not represent a utility metering infrastructure. The measurement performance depends on the PZEM-004T, the installation and the reference instrument used. The experiments use the grid as the AC source, so the behaviour of the meter on a particular solar installation is not examined. The marketplace provides discovery by distance and purchase from listings and is not an electricity-market clearing mechanism. Device communication depends on network availability, and retries improve recovery but cannot remove this dependence. The prototype demonstrates technical integration and function. It does not establish regulatory approval, commercial viability or long-term field performance. 
+# **CHAPTER FOUR**
 
-46 
+# **RESULTS AND DISCUSSION**
+
+## **4.1 Introduction**
+
+This chapter presents the results obtained from the functional evaluation of the PAYGO prototype. The discussion covers electrical measurement observations, response to changes in connected load, prepaid load-control operation, device and backend integration, and consumption reporting. Results are separated into direct observations and software implementation evidence. No measurement-accuracy claim is made because a calibrated reference meter was not available.
+
+## **4.2 Description of the Implemented Prototype**
+
+The implemented prototype consists of an ESP32-based metering and control unit interfaced with a PZEM-004T energy measurement module, a relay, a local display and supporting power circuitry. The firmware performs local energy accounting, maintains the prepaid balance and controls the connected load. The device communicates with the backend over HTTPS.
+
+The software platform consists of a Node.js and Express backend, a PostgreSQL database and a Next.js web application. Paystack is integrated for payment processing. The application provides device and balance information, transaction records, consumption reporting and CSV export. The marketplace provides location-based discovery of energy listings.
+
+**Figure 4.1:** Photograph of the assembled PAYGO hardware prototype.  
+**Figure 4.2:** Photograph of the meter LCD during the combined-load test.  
+**Figure 4.3:** Screenshot of the PAYGO consumption-reporting interface.
+
+## **4.3 Electrical Measurement and Load-Response Test**
+
+The meter was observed under a single-phase AC supply. The LCD indicated approximately 228 V and 50 Hz.
+
+A combined-load test was conducted using a pressing iron rated at 1.6 kW and a laptop charger rated at 65 W. While the iron's heating element was operating, the LCD displayed a current of 6.24 A and active power of approximately 1.26 kW. When the iron's thermostat switched off the heating element, the displayed active power decreased to approximately 104 W while the laptop charger remained connected.
+
+**Table 4.1 Electrical observations during the load test**
+
+| Test condition | Current displayed | Active power displayed |
+|---|---:|---:|
+| Pressing iron heating and laptop charger connected | 6.24 A | 1.26 kW |
+| Iron heating element switched off; laptop charger remained connected | Not recorded | 104 W |
+
+The decrease in displayed power is consistent with the operation of a thermostatically controlled pressing iron. When the heating element is energised, it draws substantial power. When the thermostat interrupts the heating element, the remaining connected load is primarily the laptop charger and any small residual appliance consumption.
+
+The iron's 1.6 kW rating represents its nominal rated power, not a value that must be drawn continuously. The observed combined power of 1.26 kW is reported as the meter's displayed reading under the test condition, rather than as a direct measurement of the iron's rated power.
+
+A consistency calculation can be made from the reported voltage, current and active-power observations. Apparent power is:
+
+\[
+S=VI=228\times6.24=1422.72\ VA
+\]
+
+The implied power factor is:
+
+\[
+PF=\frac{P}{S}=\frac{1260}{1422.72}\approx0.886
+\]
+
+This is a calculated value based on the reported display readings. It is not an independently verified power-factor measurement. The observations demonstrate the meter's response to a change in connected load, but do not establish measurement accuracy.
+
+## **4.4 Prepaid Balance and Relay Operation**
+
+The firmware maintains the prepaid energy balance locally and uses the balance state to control the load relay. Essential balance information is persisted using ESP32 Preferences storage.
+
+The physical relay cut-off and reconnection test was successfully completed. This confirms that the relay control mechanism could disconnect and reconnect the connected load during the test. It does not establish long-term relay endurance or performance under every possible load condition.
+
+**Table 4.2 Summary of prepaid load-control evaluation**
+
+| Evaluation item | Result |
+|---|---|
+| Local prepaid balance handling | Implemented in firmware |
+| Persistent balance storage | Implemented using ESP32 Preferences |
+| Relay cut-off test | Passed |
+| Relay reconnection test | Passed |
+| Long-duration relay endurance | Not evaluated |
+
+## **4.5 Device-to-Backend Communication**
+
+The ESP32 firmware communicates with the backend through HTTPS. The device sends heartbeat and balance-synchronisation information, while the backend provides the authoritative server-side balance for synchronisation.
+
+This design allows the embedded meter to perform local metering and load control without requiring a continuous network connection for every measurement. When network connectivity is restored, the device can communicate with the backend and synchronise its balance.
+
+The device communication should be distinguished from an MQTT-based credit-command architecture. The firmware used in this prototype does not subscribe to the backend MQTT credit topic. A server-side payment or transaction status is not treated as proof of a transaction-specific acknowledgement from the physical meter.
+
+## **4.6 Consumption Recording and CSV Export**
+
+The backend stores consumption readings in the `meter_readings` table. The multi-device metering migration, `20261119_multi_device_metering.sql`, was applied to the production database. The backend provides an endpoint that retrieves and aggregates consumption readings for supported reporting periods. The web application uses this information to display consumption summaries and provide CSV export.
+
+The CSV export generated the following record:
+
+**Table 4.3 Exported consumption record**
+
+| Date (UTC) | Energy consumed |
+|---|---:|
+| 2026-11-21T00:00:00.000Z | 0.058 kWh |
+
+The exported value represents recorded energy consumption of 0.058 kWh for the date represented in the export. This provides evidence that the consumption-reporting pipeline returned an exportable record.
+
+The CSV contains date-based energy values in kilowatt-hours. It does not contain historical raw samples of voltage, current, active power or frequency. Since only one exported record is available, it is not used to infer consumption for other days or to claim a long-term consumption pattern.
+
+## **4.7 Payment and Balance Management**
+
+The backend integrates Paystack payment initiation and webhook processing. Payment notifications are verified using HMAC-SHA512 signature validation, and payment references support duplicate-event prevention. Verified payments are recorded by the backend and used to update the server-side prepaid balance.
+
+The meter obtains the authoritative balance through HTTPS heartbeat and balance synchronisation. The implementation therefore links payment processing to the prepaid balance without relying on an MQTT credit command or a physical transaction-specific acknowledgement.
+
+No numerical payment transaction is presented in this chapter because a corresponding verified payment record was not supplied as experimental evidence. The payment integration is described as an implemented software function, not as a quantified payment-performance result.
+
+## **4.8 Location-Aware Energy Marketplace**
+
+The marketplace supports energy-source and listing management and location-based discovery. A buyer supplies a location, and the backend compares it with the coordinates and service radius associated with available listings. The Haversine formula is used to estimate geographic distance.
+
+The marketplace demonstrates the software logic for location-based discovery. It does not confirm the physical availability of energy at a listing or constitute a deployed electricity trading and settlement service.
+
+## **4.9 Discussion of Results**
+
+The combined-load test showed a clear change in displayed active power when the pressing iron's thermostat switched off its heating element. The meter displayed approximately 1.26 kW while the iron was heating and approximately 104 W after the heating element switched off, with the laptop charger remaining connected. This is evidence of functional response to a changing load.
+
+The successful relay cut-off and reconnection test demonstrated the operation of the prepaid load-control mechanism. The exported consumption record demonstrated that the backend and web application could make a consumption value available for CSV export. Together, these observations support the conclusion that the hardware and software components provide the core functional behaviour intended for the prototype.
+
+The results do not establish calibrated measurement accuracy, long-term reliability or performance under a range of solar operating conditions. Those claims require additional testing with reference instruments, multiple loads and an extended field evaluation.
+
+## **4.10 Limitations of the Evaluation**
+
+The evaluation was limited by the absence of a calibrated reference energy meter. Consequently, no percentage error or accuracy result is reported. The available CSV export contained one consumption record, which is insufficient to establish daily or monthly trends. The reported electrical tests were conducted using a single-phase AC supply rather than an extended field installation on a distributed solar system. Long-term relay endurance, extended network interruption and large-scale marketplace operation were also outside the available test evidence.
+
+# **CHAPTER FIVE**
+
+# **CONCLUSION AND RECOMMENDATIONS**
+
+## **5.1 Conclusion**
+
+This project presented the design and implementation of PAYGO, a smart prepaid energy metering and billing platform intended for small-scale distributed energy applications. The prototype integrates an ESP32-based metering unit, a PZEM-004T measurement module, local prepaid balance management, relay-based load control, HTTPS communication, a backend service, a PostgreSQL database and a web application.
+
+The electrical load observations demonstrated that the meter display responded to changes in the connected load. During the combined-load test involving a pressing iron and a laptop charger, the displayed power decreased from approximately 1.26 kW to 104 W when the iron's thermostat switched off its heating element. The physical relay cut-off and reconnection test was successful. The consumption-reporting interface also generated a CSV record of 0.058 kWh dated 21 November 2026.
+
+The project achieved functional integration of embedded metering, prepaid balance management, load control and web-based consumption reporting. However, the evaluation did not establish calibrated measurement accuracy because a reference energy meter was not available. The prototype should therefore be regarded as an engineering demonstration rather than a certified commercial metering product.
+
+## **5.2 Recommendations**
+
+The following improvements are recommended for future development:
+
+1. **Measurement validation:** Test the PZEM-004T against a calibrated reference energy meter over several load levels and operating conditions. Record repeated readings and calculate percentage error.
+2. **Extended load testing:** Evaluate the meter with resistive, inductive and electronic loads over longer operating periods.
+3. **Solar field evaluation:** Install the prototype in a controlled distributed solar environment to evaluate its behaviour under actual inverter and battery operating conditions.
+4. **Consumption data collection:** Collect readings over several days and weeks to evaluate reporting consistency and compare exported records with dashboard totals.
+5. **Communication reliability:** Evaluate recovery after longer network interruptions and test balance synchronisation under repeated connectivity loss.
+6. **Hardware improvement:** Review enclosure design, electrical isolation, protection, relay ratings, wiring and thermal performance before any field deployment.
+7. **Security assessment:** Conduct a structured security review of device authentication, API access, payment processing and protection of user data.
+8. **Marketplace development:** Extend the marketplace with stronger verification of energy availability, transaction reservation and settlement controls, and an appropriate regulatory review.
+
+## **5.3 Contribution of the Project**
+
+The project contributes an integrated prototype that combines local embedded energy measurement and prepaid load control with a web-based platform for payment processing, device management and consumption reporting. It also demonstrates how location-based listing discovery can be incorporated into a software platform intended for distributed energy applications.
+
+The implementation provides a foundation for further engineering work on prepaid energy management in small-scale solar installations. Its main contribution is the integration and functional demonstration of the hardware and software subsystems, rather than the development of a certified meter or a commercially deployed electricity market.
 
 - JORDAN, D. C., and KURTZ, S. R., ‘Photovoltaic Degradation Rates—an Analytical Review’, _Progress in Photovoltaics: Research and Applications_ , January 2013, Vol. 21, no. 1, pp. 12–29, doi: 10.1002/pip.1182. 
 
