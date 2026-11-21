@@ -43,37 +43,33 @@ This document lists every test planned for the PAYGO prototype\. For each test i
 
 # 2\. Project objectives and the tests that cover them
 
-The tests are organised by the four specific objectives of the project\.
+The tests are organised around the implemented project objectives:
 
-1\. Design and implement an embedded prepaid smart metering unit using the PZEM-004T sensor module, ESP32 microcontroller, and automated relay control to measure single-phase electrical parameters, deduct consumed energy credit in real time, and automatically disconnect or reconnect the load based on available balance\.
+1\. Implement an ESP32-based prepaid metering unit using the PZEM-004T to measure single-phase electrical parameters, calculate consumption and maintain a local balance with relay-based load control.
 
-2\. Establish bidirectional wireless communication between the embedded metering device and a cloud backend to transmit real-time energy consumption data and execute authorised remote control commands\.
+2\. Implement HTTPS communication between the embedded meter and backend for heartbeat reporting and prepaid balance synchronisation.
 
-3\. Develop a web-based energy management and location-aware marketplace platform that supports digital credit recharge, user and transaction management, energy data visualisation, and identification of nearby listed energy sources using geographical coordinates and the Haversine formula\.
+3\. Develop a web platform for payment processing, user and device management, transaction history, consumption reporting and CSV export, together with a location-aware marketplace.
 
-4\. Evaluate the integrated system through component-level, integration, and operational testing to validate its metering accuracy, prepaid billing, load switching, communication reliability, and web platform performance\.
-
-
+4\. Evaluate the prototype through available functional hardware and software tests, while identifying tests that could not be completed.
 
 | **No\.** | **Test** | **Level** | **Objective covered** |
 | --- | --- | --- | --- |
-| T1 | Energy measurement accuracy \(PZEM-004T against a reference\) | Component | Objective 1 |
-| T2 | Prepaid credit deduction | Component | Objective 1 |
-| T3 | Load control \(relay operation\) | Component | Objective 1 |
-| T4 | Heartbeat, balance and consumption data over HTTPS | Integration | Objective 2 |
-| T5 | Credit delivery and acknowledgement at the meter | Integration | Objective 2 |
-| T6 | Recovery after the meter was offline | Operational | Objective 2 |
+| T1 | Measurement comparison against a calibrated reference | Component | Objective 1 |
+| T2 | Local energy accounting and prepaid balance deduction | Component | Objective 1 |
+| T3 | Physical relay cut-off and reconnection | Component | Objective 1 |
+| T4 | HTTPS heartbeat and balance synchronisation | Integration | Objective 2 |
+| T5 | Verified payment and HTTPS balance synchronisation | Integration | Objective 3 |
+| T6 | Recovery after network interruption | Operational | Objective 2 |
 | T7 | Payment initiation and webhook verification | Integration | Objective 3 |
 | T8 | Energy-credit calculation | Component | Objective 3 |
-| T9 | Duplicate prevention | Integration | Objective 3 |
-| T10 | Marketplace: location matching and service radius | Integration | Objective 3 |
-| T11 | Web platform functions and response time | Integration | Objective 3 |
-| T12 | Integrated end-to-end test | Operational | Objective 4 \(all\) |
-| T13 | Automated backend tests | Component \(software\) | Objective 4 |
+| T9 | Duplicate payment prevention | Integration | Objective 3 |
+| T10 | Marketplace location matching and service radius | Integration | Objective 3 |
+| T11 | Web platform functions and reporting/export | Integration | Objective 3 |
+| T12 | Integrated functional evaluation | Operational | Objective 4 |
+| T13 | Automated backend tests | Software | Objective 4 |
 
-
-
-Objective 4 is met by running the other tests at three levels: component-level tests \(individual parts such as measurement, credit deduction and the relay\), integration tests \(parts working together, such as the meter with the backend, Paystack and the web application\) and operational tests \(the whole system in use, including recovery after loss of connection\)\.
+The procedures below describe methods that can be used to evaluate the prototype. A procedure in this document is not, by itself, evidence that the test was completed. Chapter Four reports only results supported by actual observations or available software evidence.
 
 # 3\. Test procedures
 
@@ -236,119 +232,87 @@ To check that the relay supplies the load while credit is available, disconnects
 
 All three cycles behave as above, with no unintended switching\.
 
-## Objective 2: Wireless communication with the backend
+## Objective 2: HTTPS communication with the backend
 
-*Establish bidirectional wireless communication between the embedded metering device and a cloud backend to transmit real-time energy consumption data and execute authorised remote control commands\.*
+*Implement HTTPS communication between the embedded meter and backend for heartbeat reporting and prepaid balance synchronisation.*
 
-### T4: Heartbeat, balance and consumption data over HTTPS
+### T4: Heartbeat and balance synchronisation over HTTPS
 
 **Objective of the test**
 
-To check that the meter transmits its state, balance and energy consumption data to the backend in near real time, and that the web application shows the same values\.
+To check that the meter sends heartbeat requests and synchronises its local prepaid balance with the authoritative balance returned by the backend.
 
 **What you need**
 
 - PAYGO meter connected to Wi-Fi
-
 - Deployed backend and web application
-
-- Wi-Fi router that can be switched off
-
 - Backend logs or database access
 
 **Procedure**
 
-1. Power the meter and wait for it to connect to Wi-Fi\.
+1. Power the meter and allow it to connect to Wi-Fi.
+2. Check the backend logs or device record for a recent heartbeat and last-seen timestamp.
+3. Record the balance shown on the meter and compare it with the server-side device balance.
+4. Allow the device to perform its normal balance synchronisation and record the resulting values.
+5. Repeat after a controlled balance update.
+6. Do not expect raw voltage, current, active-power or frequency samples to appear in the backend as continuous telemetry; those measurements are acquired locally by the meter.
 
-2. In the backend logs or database, check that heartbeat requests arrive and that the device status is ONLINE with a recent last-seen time\. Record the interval between heartbeats\.
+**Record the following**
 
-3. Note the balance on the meter display\. Check that the backend and the web application show the same value, and record the delay before the web value updates\.
-
-4. Run the load briefly\. Check that the energy consumption data \(power and accumulated energy\) and the balance reach the backend, and that they follow the load\. Record the delay\.
-
-5. Switch off the Wi-Fi router for longer than the offline timeout\. Check that the device is marked OFFLINE\.
-
-6. Switch the router back on\. Check that the device returns to ONLINE and that the balance in the backend matches the meter\.
-
-**Record the following \(results go in Chapter Four\)**
-
-| **Check** | **Meter value** | **Backend value** | **Web app value** | **Time delay \(s\)** |
-| --- | --- | --- | --- | --- |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-
-
+| Check | Meter balance (kWh) | Backend balance (kWh) | Match? |
+|---|---:|---:|---|
+| Initial synchronisation | | | |
+| After balance update | | | |
 
 **Expected result**
 
-- Heartbeats arrive at the expected interval\.
-
-- Balance on the meter, in the backend and on the web page agree\.
-
-- Status changes to OFFLINE when the connection is lost and back to ONLINE after reconnection\.
+- The backend receives valid heartbeat requests.
+- The meter and backend balance values agree after synchronisation.
 
 **Pass criterion**
 
-Balance values agree after each update and status changes correctly in both directions\.
+The heartbeat is received and the meter synchronises to the authoritative server-side balance. Record only observed outcomes.
 
-### T5: Credit delivery and acknowledgement at the meter
+### T5: Verified payment and HTTPS balance synchronisation
 
 **Objective of the test**
 
-To check that a confirmed payment increases the balance on the physical meter and that the transaction is marked CONFIRMED only when the meter has accepted the credit\.
+To check that a verified payment updates the server-side device balance and that the meter obtains the updated balance through its HTTPS heartbeat and synchronisation process.
 
 **What you need**
 
 - PAYGO meter online
-
 - Web application and backend
-
-- Paystack test mode
-
-- Stopwatch
+- Paystack test mode or an authorised test payment process
+- Access to the meter display and backend transaction/device records
 
 **Procedure**
 
-1. Note the balance on the meter display and the status of the device\.
+1. Record the starting balance displayed by the meter and stored by the backend.
+2. Initiate a payment through the web application.
+3. Confirm that the backend receives and verifies the Paystack webhook.
+4. Check that the payment transaction is recorded and the server-side device balance is updated.
+5. Allow the meter to send its next HTTPS heartbeat.
+6. Record the balance returned by the backend and the balance displayed by the meter after synchronisation.
+7. Compare the server-side and local balances.
 
-2. Make a test payment of a known amount\.
+**Record the following**
 
-3. Immediately after the webhook, check the transaction\. Its hardware status should be PENDING\.
-
-4. Watch the meter display and record the time at which the balance increases and the new value\.
-
-5. Check that the hardware status changes to CONFIRMED and record the time\.
-
-6. Compare the increase in balance with the energy in the transaction\.
-
-7. Repeat five times and calculate the confirmation rate with Equation \(3\.6\)\.
-
-**Record the following \(results go in Chapter Four\)**
-
-| **Run** | **Expected kWh** | **Balance increase \(kWh\)** | **Time to credit \(s\)** | **Final status** |
-| --- | --- | --- | --- | --- |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-
-
+| Run | Payment reference | Server balance after payment (kWh) | Meter balance after sync (kWh) | Match? |
+|---|---|---:|---:|---|
+| | | | | |
+| | | | | |
+| | | | | |
 
 **Expected result**
 
-- Balance on the meter increases by the energy in the transaction\.
+- A verified payment updates the server-side balance.
+- The meter synchronises its local balance through HTTPS.
+- The local and server-side balances agree after synchronisation.
 
-- Status is PENDING first and CONFIRMED after the meter acknowledges\.
+**Important limitation**
 
-**Pass criterion**
-
-All five credits are confirmed and the balance increase matches the transaction\.
-
-**Note**
-
-Adapt the steps to the way your firmware receives credit over HTTPS \(for example, by polling the backend\)\. If your firmware does not send an acknowledgement, record that and do not claim confirmation\.
+The firmware does not subscribe to the backend MQTT credit topic and does not send a transaction-specific physical credit acknowledgement. Do not describe the backend transaction status as proof of such an acknowledgement. If no actual payment test was performed, report the integration as implemented and leave the test result unclaimed.
 
 ### T6: Recovery after the meter was offline
 
