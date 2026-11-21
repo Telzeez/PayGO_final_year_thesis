@@ -794,105 +794,88 @@ The project contributes an integrated prototype that combines local embedded ene
 
 The implementation provides a foundation for further engineering work on prepaid energy management in small-scale solar installations. Its main contribution is the integration and functional demonstration of the hardware and software subsystems, rather than the development of a certified meter or a commercially deployed electricity market.
 
-- JORDAN, D. C., and KURTZ, S. R., ‘Photovoltaic Degradation Rates—an Analytical Review’, _Progress in Photovoltaics: Research and Applications_ , January 2013, Vol. 21, no. 1, pp. 12–29, doi: 10.1002/pip.1182. 
+# REFERENCES
 
-- STRAUB-MÜCK, M., GEYER-KLINGEBERG, J., and RATHGEBER, A. W., ‘Determinants of the long-term degradation rate of photovoltaic modules: A metaanalysis’, _Renewable and Sustainable Energy Reviews_ , July 2025, Vol. 216, p. 115697, doi: 10.1016/j.rser.2025.115697. 
+ABED, I. A. and NASER, H. Y. (2020). ESP32 microcontroller based smart power meter system design and implementation. *Al-Rafidain Engineering Journal (AREJ)*, 25(2), 136–143. https://doi.org/10.33899/rengj.2020.127111.1038
 
-- MONYEI, C. G., ADEWUMI, A. O., OBOLO, M. O., and SAJOU, B., ‘Nigeria’s energy poverty: Insights and implications for smart policies and framework towards a smart Nigeria electricity network’, _Renewable and Sustainable Energy Reviews_ , January 2018, Vol. 81, pp. 1582–1601, doi: 10.1016/j.rser.2017.05.237. 
+ALAO, K., JIMOH, K. and OBADIORA, A. J. (2022). Evaluation of customer education and satisfaction of prepaid meter usage in Nigeria electricity distribution company. *Journal of Digital Learning and Education*, 2(1), 31–41. https://doi.org/10.52562/jdle.v2i1.323
 
-- SOYEMI, A. O., SAMUEL, I. A., AYOBAMI, A. A. O., and AKINMEJI, A., ‘The Challenges of Estimated Billing on Electricity Consumers in Nigeria: A Review’, _IOP Conference Series: Earth and Environmental Science_ , April 2021, Vol. 730, no. 1, p. 012025, doi: 10.1088/1755-1315/730/1/012025. 
+ARBAB-ZAVAR, B., PALACIOS-GARCIA, E. J., VASQUEZ, J. C. and GUERRERO, J. M. (2021). Message queuing telemetry transport communication infrastructure for grid-connected AC microgrids management. *Energies*, 14(18), 5610. https://doi.org/10.3390/en14185610
 
-- MOHAMMED, Y. S., MUSTAFA, M. W., BASHIR, N., and MOKHTAR, A. S., ‘Renewable energy resources for distributed power generation in Nigeria: A review of the potential’, _Renewable and Sustainable Energy Reviews_ , June 2013, Vol. 22, pp. 257–268, doi: 10.1016/j.rser.2013.01.020. 
+BAIG, M. J. A., IQBAL, M. T., JAMIL, M. and KHAN, J. (2021). Design and implementation of an open-source IoT and blockchain-based peer-to-peer energy trading platform using ESP32-S2, Node-RED and MQTT protocol. *Energy Reports*, 7, 5733–5746. https://doi.org/10.1016/j.egyr.2021.08.190
 
-- CHANCHANGI, YUSUF. N., ADU, F., GHOSH, A., SUNDARAM, S., and MALLICK, TAPAS. K., ‘Nigeria’s energy review: Focusing on solar energy potential and penetration’, _Environment, Development and Sustainability_ , July 2023, Vol. 25, no. 7, pp. 5755–5796, doi: 10.1007/s10668-022-02308-4. 
+BARRY, M. S. and CRETI, A. (2020). Pay-as-you-go contracts for electricity access: Bridging the “last mile” gap? A case study in Benin. *Energy Economics*, 90, 104843. https://doi.org/10.1016/j.eneco.2020.104843
 
-- OLADIGBOLU, J. O., RAMLI, M. A. M., and AL-TURKI, Y. A., ‘Optimal Design of a Hybrid PV Solar/Micro-Hydro/Diesel/Battery Energy System for a Remote Rural Village under Tropical Climate Conditions’, _Electronics_ , September 2020, Vol. 9, no. 9, p. 1491, doi: 10.3390/electronics9091491. 
+CHANCHANGI, Y. N., ADU, F., GHOSH, A., SUNDARAM, S. and MALLICK, T. K. (2023). Nigeria’s energy review: Focusing on solar energy potential and penetration. *Environment, Development and Sustainability*, 25(7), 5755–5796. https://doi.org/10.1007/s10668-022-02308-4
 
-- OLATOMIWA, L., MEKHILEF, S., SHAMSHIRBAND, S., and PETKOVIĆ, D., ‘Adaptive neuro-fuzzy approach for solar radiation prediction in Nigeria’, _Renewable and Sustainable Energy Reviews_ , November 2015, Vol. 51, pp. 1784– 1791, doi: 10.1016/j.rser.2015.05.068. 
+CHEN, Z., AMANI, A. M., YU, X. and JALILI, M. (2023). Control and optimisation of power grids using smart meter data: A review. *Sensors*, 23(4), 2118. https://doi.org/10.3390/s23042118
 
-- REDDY, K. S., KUMAR, M., MALLICK, T. K., SHARON, H., and LOKESWARAN, S., ‘A review of Integration, Control, Communication and Metering (ICCM) of renewable energy based smart grid’, _Renewable and Sustainable Energy Reviews_ , October 2014, Vol. 38, pp. 180–192, doi: 10.1016/j.rser.2014.05.049. 
+DEPURU, S. S. S. R., WANG, L. and DEVABHAKTUNI, V. (2011). Electricity theft: Overview, issues, prevention and a smart meter based approach to control theft. *Energy Policy*, 39(2), 1007–1015. https://doi.org/10.1016/j.enpol.2010.11.037
 
-- SOTO, E. A., BOSMAN, L. B., WOLLEGA, E., and LEON-SALAS, W. D., ‘Peer-to-peer energy trading: A review of the literature’, _Applied Energy_ , February 2021, Vol. 283, p. 116268, doi: 10.1016/j.apenergy.2020.116268. 
+EL-KHOZONDAR, H. J., MTAIR, S. Y., QOFFA, K. O., QASEM, O. I., MUNYARAWI, A. H., NASSAR, Y. F. et al. (2024). A smart energy monitoring system using ESP32 microcontroller. *e-Prime – Advances in Electrical Engineering, Electronics and Energy*, 9, 100666. https://doi.org/10.1016/j.prime.2024.100666
 
-47 
+FEDERAL REPUBLIC OF NIGERIA (2023). *Electricity Act 2023*. Abuja, Nigeria: Federal Government Printer. Available at: https://placng.org
 
-- BAIG, M. J. A., IQBAL, M. T., JAMIL, M., and KHAN, J., ‘Design and implementation of an open-Source IoT and blockchain-based peer-to-peer energy trading platform using ESP32-S2, Node-Red and, MQTT protocol’, _Energy Reports_ , November 2021, Vol. 7, pp. 5733–5746, doi: 10.1016/j.egyr.2021.08.190. 
+IRIANTO, K. D. (2023). Pre-SEMMS: A design of prepaid smart energy meter monitoring system for household uses based on Internet of Things. *Journal of Electronics, Electromedical Engineering, and Medical Informatics*, 5(2), 69–74. https://doi.org/10.35882/jeeemi.v5i2.282
 
-- CHANCHANGI, YUSUF. N., ADU, F., GHOSH, A., SUNDARAM, S., and MALLICK, TAPAS. K., ‘Nigeria’s energy review: Focusing on solar energy potential and penetration’, _Environment, Development and Sustainability_ , July 2023b, Vol. 25, no. 7, pp. 5755–5796, doi: 10.1007/s10668-022-02308-4. 
+JACK, K. and SMITH, G. (2020). Charging ahead: Prepaid metering, electricity use, and utility revenue. *American Economic Journal: Applied Economics*, 12(2), 134–168. https://doi.org/10.1257/app.20180155
 
-- OLADIGBOLU, J. O., RAMLI, M. A. M., and AL-TURKI, Y. A., ‘Optimal Design of a Hybrid PV Solar/Micro-Hydro/Diesel/Battery Energy System for a Remote Rural Village under Tropical Climate Conditions’, _Electronics_ , September 2020b, Vol. 9, no. 9, p. 1491, doi: 10.3390/electronics9091491. 
+JORDAN, D. C. and KURTZ, S. R. (2013). Photovoltaic degradation rates—an analytical review. *Progress in Photovoltaics: Research and Applications*, 21(1), 12–29. https://doi.org/10.1002/pip.1182
 
-- WIBOWO, L., WAHYUSARI, R., YUWONO, T., and SHOFIA, A., ‘IoT-based highaccuracy monitoring system for on-grid photovoltaic power system using NodeMCU ESP8266 and PZEM004T’, _Journal of Mechatronics, Electrical Power, and Vehicular Technology_ , December 2024, Vol. 15, no. 2, pp. 230–241, doi: 10.55981/j.mev.2024.823. 
+MANOWSKA, A., WYCISK, A., NOWROT, A. and PIELOT, J. (2022). The use of the MQTT protocol in measurement, monitoring and control systems as part of the implementation of energy management systems. *Electronics*, 12(1), 17. https://doi.org/10.3390/electronics12010017
 
-- NUMMINEN, S., and LUND, P. D., ‘Evaluation of the reliability of solar micro-grids in emerging markets – Issues and solutions’, _Energy for Sustainable Development_ , February 2019, Vol. 48, pp. 34–42, doi: 10.1016/j.esd.2018.10.006. 
+MERGULHÃO, V. P., CAPRA, L. and PARIKH, P. (2026). Solar home system payment patterns show intermittent access and late-term defaults in pay-as-you-go contracts. *Communications Sustainability*, 1(1), 150. https://doi.org/10.1038/s44458-026-00121-y
 
-- MERGULHÃO, V. P., CAPRA, L., and PARIKH, P., ‘Solar home system payment patterns show intermittent access and late-term defaults in pay-as-you-go contracts’, _Communications Sustainability_ , September 2026, Vol. 1, no. 1, p. 150, doi: 10.1038/s44458-026-00121-y. 
+MOHAMMED, Y. S., MUSTAFA, M. W., BASHIR, N. and MOKHTAR, A. S. (2013). Renewable energy resources for distributed power generation in Nigeria: A review of the potential. *Renewable and Sustainable Energy Reviews*, 22, 257–268. https://doi.org/10.1016/j.rser.2013.01.020
 
-- VETTER, J., NOVÁK, P., WAGNER, M. R., VEIT, C., MÖLLER, K.-C., BESENHARD, J. O., et al., ‘Ageing mechanisms in lithium-ion batteries’, _Journal of Power Sources_ , September 2005, Vol. 147, no. 1–2, pp. 269–281, doi: 10.1016/j.jpowsour.2005.01.006. 
+MONYEI, C. G., ADEWUMI, A. O., OBOLO, M. O. and SAJOU, B. (2018). Nigeria’s energy poverty: Insights and implications for smart policies and framework towards a smart Nigeria electricity network. *Renewable and Sustainable Energy Reviews*, 81, 1582–1601. https://doi.org/10.1016/j.rser.2017.05.237
 
-- XU, B., OUDALOV, A., ULBIG, A., ANDERSSON, G., and KIRSCHEN, D. S., ‘Modeling of Lithium-Ion Battery Degradation for Cell Life Assessment’, _IEEE Transactions on Smart Grid_ , March 2018, Vol. 9, no. 2, pp. 1131–1140, doi: 10.1109/TSG.2016.2578950. 
+MUTTAQIN, A., MURTOPO, A. A., SYEFUDIN, S. and GUNAWAN, G. (2024). Application of the Haversine formula method to determine the closest distance to a minimarket. *Jurnal Mandiri IT*, 13(1), 72–80. https://doi.org/10.35335/mandiri.v13i1.293
 
-- ROLFFS, P., OCKWELL, D., and BYRNE, R., ‘Beyond technology and finance: pay-asyou-go sustainable energy access and theories of social change’, _Environment and Planning A: Economy and Space_ , December 2015, Vol. 47, no. 12, pp. 2609–2627, doi: 10.1177/0308518X15615368. 
+NIGERIAN ELECTRICITY REGULATORY COMMISSION (2026). *Mini-Grid Regulations, 2026*. Available at: https://nerc.gov.ng
 
-- YADAV, P., HEYNEN, A. P., and PALIT, D., ‘Pay-As-You-Go financing: A model for viable and widespread deployment of solar home systems in rural India’, _Energy for_ 
+NUMMINEN, S. and LUND, P. D. (2019). Evaluation of the reliability of solar micro-grids in emerging markets—issues and solutions. *Energy for Sustainable Development*, 48, 34–42. https://doi.org/10.1016/j.esd.2018.10.006
 
-48 
+OASIS (2014). *MQTT Version 3.1.1*. Available at: https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html
 
-_Sustainable Development_ , February 2019, Vol. 48, pp. 139–153, doi: 10.1016/j.esd.2018.12.005. 
+OLADIGBOLU, J. O., RAMLI, M. A. M. and AL-TURKI, Y. A. (2020). Optimal design of a hybrid PV solar/micro-hydro/diesel/battery energy system for a remote rural village under tropical climate conditions. *Electronics*, 9(9), 1491. https://doi.org/10.3390/electronics9091491
 
-- BARRY, M. S., and CRETI, A., ‘Pay-as-you-go contracts for electricity access: Bridging the “last mile” gap? A case study in Benin’, _Energy Economics_ , August 2020, Vol. 90, p. 104843, doi: 10.1016/j.eneco.2020.104843. 
+OLATOMIWA, L., MEKHILEF, S., SHAMSHIRBAND, S. and PETKOVIĆ, D. (2015). Adaptive neuro-fuzzy approach for solar radiation prediction in Nigeria. *Renewable and Sustainable Energy Reviews*, 51, 1784–1791. https://doi.org/10.1016/j.rser.2015.05.068
 
-- JACK, K., and SMITH, G., ‘Charging Ahead: Prepaid Metering, Electricity Use, and Utility Revenue’, _American Economic Journal: Applied Economics_ , April 2020, Vol. 12, no. 2, pp. 134–168, doi: 10.1257/app.20180155. 
+QUAZI, I., GUPTA, S. K. and PRASAD, R. (2011). Pre-paid energy meter based on AVR microcontroller. Available at: https://api.semanticscholar.org/CorpusID:13446326
 
-- ALAO, K., JIMOH, K., and OBADIORA, A. J., ‘Evaluation of Customer Education and Satisfaction of Prepaid Meter Usage in Nigeria Electricity Distribution Company’, _Journal of Digital Learning and Education_ , April 2022, Vol. 2, no. 1, pp. 31–41, doi: 10.52562/jdle.v2i1.323. 
+RAJPUT, U. A., RAFIQUE, K., SATTAR, A., SHAIKH, M. and TARIQUE, M. (2018). Modeling of Arduino-based prepaid energy meter using GSM technology. *International Journal of Advanced Computer Science and Applications*, 9(5). https://doi.org/10.14569/IJACSA.2018.090558
 
-- QUAZI, I., GUPTA, S. K., and PRASAD, R., ‘Pre-paid Energy Meter based on AVR Microcontroller’, 2011, Available: https://api.semanticscholar.org/CorpusID:13446326. 
+RASHED MOHASSEL, R., FUNG, A., MOHAMMADI, F. and RAAHEMIFAR, K. (2014). A survey on advanced metering infrastructure. *International Journal of Electrical Power & Energy Systems*, 63, 473–484. https://doi.org/10.1016/j.ijepes.2014.06.025
 
-- RAJPUT, U. A., RAFIQUE, K., SATTAR, A., SHAIKH, M., and TARIQUE, M., ‘Modeling of Arduino-based Prepaid Energy Meter using GSM Technology’, _International Journal of Advanced Computer Science and Applications_ , 2018, Vol. 9, no. 5, doi: 10.14569/IJACSA.2018.090558. 
+REDDY, K. S., KUMAR, M., MALLICK, T. K., SHARON, H. and LOKESWARAN, S. (2014). A review of integration, control, communication and metering (ICCM) of renewable energy based smart grid. *Renewable and Sustainable Energy Reviews*, 38, 180–192. https://doi.org/10.1016/j.rser.2014.05.049
 
-- IRIANTO, K. D., ‘Pre-SEMMS: A Design of Prepaid Smart Energy Meter Monitoring System for Household Uses Based on Internet of Things’, _Journal of Electronics, Electromedical Engineering, and Medical Informatics_ , March 2023, Vol. 5, no. 2, pp. 69–74, doi: 10.35882/jeeemi.v5i2.282. 
+RIND, Y. M., RAZA, M. H., ZUBAIR, M., MEHMOOD, M. Q. and MASSOUD, Y. (2023). Smart energy meters for smart grids, an Internet of Things perspective. *Energies*, 16(4), 1974. https://doi.org/10.3390/en16041974
 
-- RASHED MOHASSEL, R., FUNG, A., MOHAMMADI, F., and RAAHEMIFAR, K., ‘A survey on Advanced Metering Infrastructure’, _International Journal of Electrical Power & Energy Systems_ , December 2014, Vol. 63, pp. 473–484, doi: 10.1016/j.ijepes.2014.06.025. 
+ROLFFS, P., OCKWELL, D. and BYRNE, R. (2015). Beyond technology and finance: Pay-as-you-go sustainable energy access and theories of social change. *Environment and Planning A: Economy and Space*, 47(12), 2609–2627. https://doi.org/10.1177/0308518X15615368
 
-- CHEN, Z., AMANI, A. M., YU, X., and JALILI, M., ‘Control and Optimisation of Power Grids Using Smart Meter Data: A Review’, _Sensors_ , February 2023, Vol. 23, no. 4, p. 2118, doi: 10.3390/s23042118. 
+SOTO, E. A., BOSMAN, L. B., WOLLEGA, E. and LEON-SALAS, W. D. (2021). Peer-to-peer energy trading: A review of the literature. *Applied Energy*, 283, 116268. https://doi.org/10.1016/j.apenergy.2020.116268
 
-- RIND, Y. M., RAZA, M. H., ZUBAIR, M., MEHMOOD, M. Q., and MASSOUD, Y., ‘Smart Energy Meters for Smart Grids, an Internet of Things Perspective’, _Energies_ , February 2023, Vol. 16, no. 4, p. 1974, doi: 10.3390/en16041974. 
+SOYEMI, A. O., SAMUEL, I. A., AYOBAMI, A. A. O. and AKINMEJI, A. (2021). The challenges of estimated billing on electricity consumers in Nigeria: A review. *IOP Conference Series: Earth and Environmental Science*, 730(1), 012025. https://doi.org/10.1088/1755-1315/730/1/012025
 
-- ABED, I. A., and NASER, H. Y., ‘ESP32 Microcontroller Based Smart Power Meter System Design and Implementation’, _Al-Rafidain Engineering Journal (AREJ)_ , December 2020, Vol. 25, no. 2, pp. 136–143, doi: 10.33899/rengj.2020.127111.1038. 
+STRAUB-MÜCK, M., GEYER-KLINGEBERG, J. and RATHGEBER, A. W. (2025). Determinants of the long-term degradation rate of photovoltaic modules: A meta-analysis. *Renewable and Sustainable Energy Reviews*, 216, 115697. https://doi.org/10.1016/j.rser.2025.115697
 
-49 
+T. E., S., C. O. A., A. and A., C. (2019). Smart prepaid energy metering system to detect energy theft with facility for real time monitoring. *International Journal of Electrical and Computer Engineering (IJECE)*, 9(5), 4184. https://doi.org/10.11591/ijece.v9i5.pp4184-4191
 
-- WAN, L., ZHANG, Z., and WANG, J., ‘Demonstrability of Narrowband Internet of Things technology in advanced metering infrastructure’, _EURASIP Journal on Wireless Communications and Networking_ , December 2019, Vol. 2019, no. 1, p. 2, doi: 10.1186/s13638-018-1323-y. 
+URREA, C. and MORALES, C. (2019). Enhancing Modbus-RTU communications for smart metering in building energy management systems. *Security and Communication Networks*, 2019, 1–8. https://doi.org/10.1155/2019/7010717
 
-- DEPURU, S. S. S. R., WANG, L., and DEVABHAKTUNI, V., ‘Electricity theft: Overview, issues, prevention and a smart meter based approach to control theft’, _Energy Policy_ , February 2011, Vol. 39, no. 2, pp. 1007–1015, doi: 10.1016/j.enpol.2010.11.037. 
+VARELA-ALDÁS, J., SILVA, S. and PALACIOS-NAVARRO, G. (2022). IoT-based alternating current electrical parameters monitoring system. *Energies*, 15(18), 6637. https://doi.org/10.3390/en15186637
 
-- T. E, S., C.O.A, A., and A., C., ‘Smart prepaid energy metering system to detect energy theft with facility for real time monitoring’, _International Journal of Electrical and Computer Engineering (IJECE)_ , October 2019, Vol. 9, no. 5, p. 4184, doi: 10.11591/ijece.v9i5.pp4184-4191. 
+VETTER, J., NOVÁK, P., WAGNER, M. R., VEIT, C., MÖLLER, K.-C., BESENHARD, J. O. et al. (2005). Ageing mechanisms in lithium-ion batteries. *Journal of Power Sources*, 147(1–2), 269–281. https://doi.org/10.1016/j.jpowsour.2005.01.006
 
-- VARELA-ALDÁS, J., SILVA, S., and PALACIOS-NAVARRO, G., ‘IoT-Based Alternating Current Electrical Parameters Monitoring System’, _Energies_ , September 2022, Vol. 15, no. 18, p. 6637, doi: 10.3390/en15186637. 
+WAN, L., ZHANG, Z. and WANG, J. (2019). Demonstrability of narrowband Internet of Things technology in advanced metering infrastructure. *EURASIP Journal on Wireless Communications and Networking*, 2019(1), 2. https://doi.org/10.1186/s13638-018-1323-y
 
-- EL-KHOZONDAR, H. J., MTAIR, S. Y., QOFFA, K. O., QASEM, O. I., MUNYARAWI, A. H., NASSAR, Y. F., et al., ‘A smart energy monitoring system using ESP32 microcontroller’, _e-Prime - Advances in Electrical Engineering, Electronics and Energy_ , September 2024, Vol. 9, p. 100666, doi: 10.1016/j.prime.2024.100666. 
+WIBOWO, L., WAHYUSARI, R., YUWONO, T. and SHOFIA, A. (2024). IoT-based high-accuracy monitoring system for on-grid photovoltaic power system using NodeMCU ESP8266 and PZEM004T. *Journal of Mechatronics, Electrical Power, and Vehicular Technology*, 15(2), 230–241. https://doi.org/10.55981/j.mev.2024.823
 
-- YASA, K. A., PURBHAWA, I. M., YASA, I. M. S., TERESNA, I. W., NUGROHO, A., and WINARDI, S., ‘IoT-based Electrical Power Recording using ESP32 and PZEM-004T Microcontrollers’, _Journal of Computer Science and Technology Studies_ , November 2023, Vol. 5, no. 4, pp. 62–68, doi: 10.32996/jcsts.2023.5.4.7. 
+XU, B., OUDALOV, A., ULBIG, A., ANDERSSON, G. and KIRSCHEN, D. S. (2018). Modeling of lithium-ion battery degradation for cell life assessment. *IEEE Transactions on Smart Grid*, 9(2), 1131–1140. https://doi.org/10.1109/TSG.2016.2578950
 
-- URREA, C., and MORALES, C., ‘Enhancing Modbus-RTU Communications for Smart Metering in Building Energy Management Systems’, _Security and Communication Networks_ , November 2019, Vol. 2019, pp. 1–8, doi: 10.1155/2019/7010717. 
+YADAV, P., HEYNEN, A. P. and PALIT, D. (2019). Pay-as-you-go financing: A model for viable and widespread deployment of solar home systems in rural India. *Energy for Sustainable Development*, 48, 139–153. https://doi.org/10.1016/j.esd.2018.12.005
 
-- OASIS, _MQTT Version 3.1.1_ , October 2014, Available: https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html. 
+YASA, K. A., PURBHAWA, I. M., YASA, I. M. S., TERESNA, I. W., NUGROHO, A. and WINARDI, S. (2023). IoT-based electrical power recording using ESP32 and PZEM-004T microcontrollers. *Journal of Computer Science and Technology Studies*, 5(4), 62–68. https://doi.org/10.32996/jcsts.2023.5.4.7
 
-- ARBAB-ZAVAR, B., PALACIOS-GARCIA, E. J., VASQUEZ, J. C., and GUERRERO, J. M., ‘Message Queuing Telemetry Transport Communication Infrastructure for GridConnected AC Microgrids Management’, _Energies_ , September 2021, Vol. 14, no. 18, p. 5610, doi: 10.3390/en14185610. 
-
-- MANOWSKA, A., WYCISK, A., NOWROT, A., and PIELOT, J., ‘The Use of the MQTT Protocol in Measurement, Monitoring and Control Systems as Part of the Implementation of Energy Management Systems’, _Electronics_ , December 2022, Vol. 12, no. 1, p. 17, doi: 10.3390/electronics12010017. 
-
-- YUNARDI, E., MAGDALENA, L., and MESI FEBIMA, ‘Implementation of the Haversine Formula Method in Geographic Information Systems for Searching the Nearest Sea 
-
-50 
-
-Freight Expedition Services in East Jakarta’, _Journal of Artificial Intelligence and Engineering Applications (JAIEA)_ , October 2024, Vol. 4, no. 1, pp. 283–288, doi: 10.59934/jaiea.v4i1.622. 
-
-- MUTTAQIN, A., MURTOPO, A. A., SYEFUDIN, S., and GUNAWAN, G., ‘Application of the haversine formula method to determine the closest distance to a minimarket’, _Jurnal Mandiri IT_ , June 2024, Vol. 13, no. 1, pp. 72–80, doi: 10.35335/mandiri.v13i1.293. 
-
-- FEDERAL REPUBLIC OF NIGERIA, _Electricity Act 2023_ , Abuja, Nigeria: Federal Government Printer, 2023, Available: https://placng.org. 
-
-- NIGERIAN ELECTRICITY REGULATORY COMMISSION, _Mini-Grid Regulations, 2026_ , 2026, Available: https://nerc.gov.ng. 
-
-51 
-
+YUNARDI, E., MAGDALENA, L. and MESI FEBIMA (2024). Implementation of the Haversine formula method in geographic information systems for searching the nearest sea freight expedition services in East Jakarta. *Journal of Artificial Intelligence and Engineering Applications (JAIEA)*, 4(1), 283–288. https://doi.org/10.59934/jaiea.v4i1.622
