@@ -511,7 +511,7 @@ Figure 3.4 A picture of the assembled hardware
 
 # **Electrical energy measurement** 
 
-The ESP32 requests measurements from the PZEM-004T over its UART interface using the Modbus-RTU protocol (Abed, 2020). Active power, energy and the related quantities follow Equations (2.1) to (2.3). The accumulated energy is converted to kilowatt-hours for the billing process. The accuracy of the measurements is not assumed and is evaluated against a reference instrument as described in Section 3.13. 
+The ESP32 requests measurements from the PZEM-004T over its UART interface using the Modbus-RTU protocol (Abed, 2020). Active power, energy and the related quantities follow Equations (2.1) to (2.3). The accumulated energy is converted to kilowatt-hours for the billing process. The measurement observations are discussed in Chapter Four. A calibrated reference instrument was not available, so measurement accuracy is not established. 
 
 # **3.6 Embedded Firmware Design**
 
@@ -560,6 +560,14 @@ Following successful payment verification, the backend updates the server-side d
 This implementation should not be described as an MQTT credit-command workflow. The firmware does not subscribe to the backend MQTT credit topic. A backend transaction status must not be presented as proof that the physical meter returned a transaction-specific acknowledgement.
 
 **Figure 3.5** should show: web application initiates payment; backend initialises payment with Paystack; Paystack sends a signed webhook; backend verifies the signature and payment reference; backend records the top-up and updates the server-side balance; ESP32 sends an HTTPS heartbeat; backend returns the authoritative balance; and ESP32 synchronises its local balance.
+
+# **3.9 Device Communication and Balance Synchronisation**
+
+The embedded meter communicates with the backend over HTTPS. Heartbeat requests allow the backend to update the device's last-seen information and return the authoritative server-side balance. The firmware synchronises its local balance with this value.
+
+The meter performs energy measurement and local balance accounting independently of the web application. It does not transmit every raw PZEM-004T voltage, current, power and frequency sample to the backend as a continuous telemetry stream. Consumption information is reflected in the backend through balance updates and the associated consumption-recording process.
+
+When the network is unavailable, the firmware can continue local metering and load control using its persisted balance state. When connectivity returns, heartbeat and balance synchronisation allow the device and backend to reconcile their balance information. This is the implemented communication workflow; it does not use an MQTT credit command or a transaction-specific physical acknowledgement from the meter.
 
 # **3.10 Local Energy Marketplace**
 
