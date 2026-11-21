@@ -314,56 +314,41 @@ To check that a verified payment updates the server-side device balance and that
 
 The firmware does not subscribe to the backend MQTT credit topic and does not send a transaction-specific physical credit acknowledgement. Do not describe the backend transaction status as proof of such an acknowledgement. If no actual payment test was performed, report the integration as implemented and leave the test result unclaimed.
 
-### T6: Recovery after the meter was offline
+### T6: Recovery after network interruption
 
 **Objective of the test**
 
-To check that credit bought while the meter is offline is kept as PENDING and is applied once the meter reconnects\.
+To check that the meter continues local operation during a temporary network interruption and synchronises its balance with the backend after connectivity is restored.
 
 **What you need**
 
-- PAYGO meter and router that can be switched off
-
-- Web application and backend
-
-- Paystack test mode
+- PAYGO meter and Wi-Fi router that can be switched off
+- Access to the meter display and backend device record
 
 **Procedure**
 
-1. Switch off the router and confirm the device shows OFFLINE\.
+1. Record the meter's local balance and the corresponding backend balance.
+2. Disconnect the Wi-Fi network while leaving the meter powered.
+3. Observe whether the meter continues local measurement and load-control operation.
+4. Restore the Wi-Fi connection.
+5. Allow the meter to send its next HTTPS heartbeat and synchronise its balance.
+6. Compare the local meter balance with the backend balance after synchronisation.
 
-2. Make a test payment and note the transaction\. Its status should be PENDING and the meter balance unchanged\.
+**Record the following**
 
-3. Wait a few minutes and confirm the transaction is still PENDING \(not FAILED\)\.
-
-4. Switch the router on and wait for the meter to reconnect\.
-
-5. Record the time until the credit is applied, the new balance and the final status\.
-
-6. Check that the credit was applied once only\.
-
-**Record the following \(results go in Chapter Four\)**
-
-| **Run** | **Status while offline** | **Time to recover \(s\)** | **Final status** | **Balance correct? \(Y/N\)** |
-| --- | --- | --- | --- | --- |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
-
-
+| Run | Local operation maintained? | Backend status after reconnect | Meter balance (kWh) | Backend balance (kWh) | Match? |
+|---|---|---|---:|---:|---|
+| | | | | | |
+| | | | | | |
 
 **Expected result**
 
-- Transaction stays PENDING while the meter is offline\.
+- The meter continues local operation while the network is unavailable, subject to its locally stored balance.
+- After reconnection, the meter and backend reconcile their balance information.
 
-- Credit is applied after reconnection and the status becomes CONFIRMED\.
+**Important limitation**
 
-- No duplicate credit\.
-
-**Pass criterion**
-
-The credit is recovered once, with the correct balance, in every run\.
+This test concerns HTTPS heartbeat and balance synchronisation. It is not a test of pending MQTT credit-command delivery or a physical transaction-specific acknowledgement.
 
 ## Objective 3: Web platform and marketplace
 
