@@ -712,3 +712,43 @@ Report the actual counts; do not remove failing tests to improve the result\.
 - Keep the screenshots, logs and photos; refer to them in Chapter Four\.
 
 - Write down any test you could not carry out and the reason, and mention it in Chapter Four\.
+
+## Automated backend unit and functional tests
+
+These software tests are separate from the physical hardware tests above. They use the Node.js native test runner through `tsx --test`.
+
+### Unit tests
+
+Run from the PAYGO backend repository root:
+
+```bash
+npm run type-check
+npm test
+```
+
+The unit test command covers:
+- Appliance load calculations, simultaneous demand, apparent power, starting surge, safety margin and input validation.
+- GPS coordinate validation, Haversine distance calculation, the 50-metre service-radius boundary, effective radius selection and listing inventory rule fixtures.
+- Device API-key middleware and ADMIN role authorisation.
+
+### API and functional tests
+
+Run:
+
+```bash
+npm run test:integration
+```
+
+This starts the Express application on a local ephemeral port and exercises health, authentication, payment initiation, Paystack webhook signature validation, duplicate webhook handling, protected device routes, hardware API-key checks and transaction verification. Several database and external-service interactions are mocked. These tests must therefore be described as API/functional simulations, not live Paystack, production database or physical ESP32 tests.
+
+### Test recording
+
+For each command, retain the terminal output and record:
+- Date and environment in which the command was run.
+- Number of tests executed.
+- Number passed and failed.
+- Failure messages and any corrective changes.
+
+Do not fill in passing totals from expected assertions. The current source defines 18 unit test cases and 24 API/functional test cases; actual pass/fail totals remain unverified until the commands are executed.
+
+The legacy MQTT lifecycle simulations in the API test file must not be used as evidence of the current physical meter's payment-credit path. The implemented meter synchronises its authoritative balance over HTTPS heartbeat requests.
