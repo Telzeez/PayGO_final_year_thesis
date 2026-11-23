@@ -1,4 +1,4 @@
-## **1CHAPTER ONE** 
+## **CHAPTER ONE** 
 
 # **INTRODUCTION** 
 
@@ -102,7 +102,7 @@ This project covers the design, construction and evaluation of  PAYGO solar ener
 
 - (k) Functional testing of the hardware, firmware and software components, including their integration. 
 
-The work is limited is limited to the design, construction, and testing of a single-phase smart prepaid metering prototype powered by a standard alternating current (AC) supply for laboratory and bench-top evaluation. While the prototype interfaces with a single-phase AC source to validate energy measurement, credit deduction, and load-control functionalities, it is not designed for direct high-voltage integration into the Nigerian national grid or utilityscale power distribution networks. 
+The work is limited to the design, construction, and testing of a single-phase smart prepaid metering prototype powered by a standard alternating current (AC) supply for laboratory and bench-top evaluation. While the prototype interfaces with a single-phase AC source to validate energy measurement, credit deduction, and load-control functionalities, it is not designed for direct high-voltage integration into the Nigerian national grid or utility-scale power distribution networks. 
 
 This work does not encompass three-phase electricity metering, nor does it seek to replace certified utility prepaid metering infrastructure or regulatory standards. Although the proposed platform incorporates a software-based energy marketplace module, this study does not constitute a full commercial deployment of a regulated electricity trading system. Rather, the marketplace serves as a supporting software interface, while the primary engineering focus remains the hardware-software integration and operational reliability of the metering, prepaid credit management, and automated load-control mechanisms. 
 
@@ -124,7 +124,7 @@ Chapter Five summarizes the key findings, draws conclusions based on the system 
 
 10 
 
-## **2CHAPTER TWO** 
+## **CHAPTER TWO** 
 
 # **LITERATURE REVIEW** 
 
@@ -424,7 +424,7 @@ Research on PAYGO financing, prepaid metering and smart metering shows how payme
 
 30 
 
-## **3CHAPTER THREE** 
+## **CHAPTER THREE** 
 
 # **METHODOLOGY** 
 
