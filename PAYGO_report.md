@@ -717,6 +717,8 @@ This design allows the embedded meter to perform local metering and load control
 
 The device communication should be distinguished from an MQTT-based credit-command architecture. The firmware used in this prototype does not subscribe to the backend MQTT credit topic. A server-side payment or transaction status is not treated as proof of a transaction-specific acknowledgement from the physical meter.
 
+The firmware's HTTPS requests are authenticated using a device-specific API key sent in the `x-device-api-key` request header. The backend applies this authentication to protected device operations, including heartbeat and balance synchronisation. The automated tests described in Section 4.11 verify that protected hardware endpoints reject requests that omit the required device API key. This is evidence of the tested backend access-control behaviour; it does not establish that both physical meters have been individually configured with valid keys or that they remained online throughout a field test.
+
 ## **4.6 Consumption Recording and CSV Export**
 
 The backend stores consumption readings in the `meter_readings` table. The multi-device metering migration, `20261119_multi_device_metering.sql`, was applied to the production database. The backend provides an endpoint that retrieves and aggregates consumption readings for supported reporting periods. The web application uses this information to display consumption summaries and provide CSV export.
@@ -741,6 +743,8 @@ The meter obtains the authoritative balance through HTTPS heartbeat and balance 
 
 No numerical payment transaction is presented in this chapter because a corresponding verified payment record was not supplied as experimental evidence. The payment integration is described as an implemented software function, not as a quantified payment-performance result.
 
+The automated integration suite also tested rejection of invalid Paystack webhook signatures and duplicate-webhook idempotency. The duplicate-event test confirmed that the backend returned HTTP 200 without applying a second database credit. These are software test outcomes; they are not evidence of a measured payment-to-physical-meter delivery time.
+
 ## **4.8 Location-Aware Energy Marketplace**
 
 The marketplace supports energy-source and listing management and location-based discovery. A buyer supplies a location, and the backend compares it with the coordinates and service radius associated with available listings. The Haversine formula is used to estimate geographic distance.
@@ -759,6 +763,29 @@ The results do not establish calibrated measurement accuracy, long-term reliabil
 
 The evaluation was limited by the absence of a calibrated reference energy meter. Consequently, no percentage error or accuracy result is reported. The available CSV export contained one consumption record, which is insufficient to establish daily or monthly trends. The reported electrical tests were conducted using a single-phase AC supply rather than an extended field installation on a distributed solar system. Long-term relay endurance, extended network interruption and large-scale marketplace operation were also outside the available test evidence.
 
+## **4.11 Automated Software Verification Results**
+
+The backend integration test run recorded on 23 November 2026 completed 24 tests across nine test suites. All 24 tests passed, with zero failures, cancellations or skipped tests. The displayed run completed in approximately 6.51 seconds. A previously recorded unit-test run reported 16 passing tests out of 16. These results are software verification evidence and are reported separately from the physical electrical measurements in this chapter.
+
+**Table 4.4 Automated software test results recorded on 23 November 2026**
+
+| Test area | Evidence / checks | Result | Interpretation |
+|---|---|---|---|
+| Backend integration suite | 24 tests across 9 suites | 24 passed; 0 failed; 0 skipped | Automated integration tests passed in the reported run. |
+| Authentication and access control | Firebase profile synchronisation; protected payment, transaction and administrator/device routes; device API-key enforcement | Passed | Confirms tested access-control responses, not a complete security audit. |
+| Payment processing | Paystack HMAC signature rejection, successful webhook processing and duplicate-webhook idempotency | Passed | Confirms tested backend webhook behaviour. |
+| Remote-recharge lifecycle simulation | MQTT-disconnected pending state, simulated device acknowledgement, duplicate transaction handling and fallback-token redemption | Passed | Simulated backend workflow only; not live physical ESP32 confirmation. |
+| TypeScript build | The TypeScript compiler (`tsc`) was invoked after the integration suite | No compiler error was shown; terminal returned to the prompt | Build evidence from the supplied terminal capture. |
+| Unit tests | Previously recorded unit-test run | 16/16 passed | Software unit-test result, separate from integration and hardware tests. |
+
+The integration tests covered the health endpoint; Firebase-token requirements for profile synchronisation; rejection of the retired email/password routes; authentication requirements for payment initiation and transaction verification; Paystack webhook signature validation and duplicate-event idempotency; administrator protection for device-management endpoints; rejection of hardware requests without a device API key; and simulated remote-recharge lifecycle behaviour.
+
+The simulated lifecycle cases included a payment remaining pending when MQTT was disconnected, a simulated device acknowledgement updating transaction status, duplicate transaction-identifier handling, and fallback-token redemption without a second database balance credit. These are automated backend/integration-test scenarios. They are not measurements from a physical meter and do not prove that either installed ESP32 received a live command or synchronised successfully during this test run.
+
+The terminal capture also shows the TypeScript build command being run after the integration suite, with the terminal returning to the shell prompt and no compiler error displayed. The unit-test result of 16/16 was recorded separately. These software results must not be interpreted as physical meter accuracy, relay endurance, live device connectivity or completed end-to-end hardware validation.
+
+The physical meters still require individual device API-key configuration and live verification of heartbeat and balance synchronisation. A controlled network interruption/reconnection test, repeated comparison against a calibrated reference meter, and physical payment-to-meter validation remain outstanding.
+
 # **CHAPTER FIVE**
 
 # **CONCLUSION AND RECOMMENDATIONS**
@@ -769,7 +796,7 @@ This project presented the design and implementation of PAYGO, a smart prepaid e
 
 The electrical load observations demonstrated that the meter display responded to changes in the connected load. During the combined-load test involving a pressing iron and a laptop charger, the displayed power decreased from approximately 1.26 kW to 104 W when the iron's thermostat switched off its heating element. The physical relay cut-off and reconnection test was successful. The consumption-reporting interface also generated a CSV record of 0.058 kWh dated 21 November 2026.
 
-The project achieved functional integration of embedded metering, prepaid balance management, load control and web-based consumption reporting. However, the evaluation did not establish calibrated measurement accuracy because a reference energy meter was not available. The prototype should therefore be regarded as an engineering demonstration rather than a certified commercial metering product.
+The project achieved functional integration of embedded metering, prepaid balance management, load control and web-based consumption reporting. However, the evaluation did not establish calibrated measurement accuracy because a reference energy meter was not available. The prototype should therefore be regarded as an engineering demonstration rather than a certified commercial metering product. The backend integration test run additionally recorded 24/24 passing tests across nine suites, while the previously recorded unit-test run reported 16/16 passing. These software tests verified selected authentication, payment-webhook, device-access-control and simulated recharge-lifecycle behaviours. They do not establish live physical ESP32 credit delivery or calibrated meter accuracy.
 
 ## **5.2 Recommendations**
 
