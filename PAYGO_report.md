@@ -603,6 +603,8 @@ The production database migration for multi-device metering and consumption read
 | Consumption storage and reporting | Check database reading storage, reporting endpoint and CSV export. | Production migration applied; CSV export produced a consumption record. |
 | Marketplace | Check location and service-radius matching logic. | Implemented as a prototype software feature. |
 | Integrated operation | Consider combined operation of hardware and software components. | Functional prototype demonstrated; extended field and accuracy testing remain future work. |
+| Backend unit tests | Execute isolated tests for appliance-load calculations, Haversine distance/radius rules and access-control middleware. | 18 test cases are present in the proposed backend test branch; execution results have not yet been recorded. |
+| Backend API/functional tests | Exercise HTTP endpoints for health, authentication, payment initiation, webhook validation, device access and transaction verification. | 24 test cases are present in the proposed backend test branch; several database/payment interactions are mocked. Execution results have not yet been recorded. |
 
 # **3.13 Performance Evaluation and Data Analysis**
 
@@ -751,7 +753,93 @@ The marketplace supports energy-source and listing management and location-based
 
 The marketplace demonstrates the software logic for location-based discovery. It does not confirm the physical availability of energy at a listing or constitute a deployed electricity trading and settlement service.
 
-## **4.9 Discussion of Results**
+## **4.9 Software Unit and Functional Testing**
+
+In addition to the physical prototype evaluation, automated tests have been prepared for the PAYGO backend. The tests use the Node.js native test runner through `tsx --test`. They are divided into unit tests, which check isolated calculations and middleware behaviour, and API/functional tests, which exercise HTTP routes using a locally started Express application.
+
+The test cases described below are present in the proposed backend testing branch. They are documented here as implemented test cases and expected assertions. A test case being present in the source code does not, by itself, establish that it has passed. No pass percentage or successful execution total is claimed until the test commands have been run and their terminal or CI output has been saved.
+
+### **4.9.1 Unit tests**
+
+Eighteen unit test cases are defined across three test files.
+
+**Table 4.4 Backend unit test coverage**
+
+| Test file / module | Test coverage | Expected result asserted in code |
+|---|---|---|
+| `loadAssessment.test.ts` | Connected load and simultaneous demand | 240 W fixture demand; 288 W after applying a 20% safety margin |
+| `loadAssessment.test.ts` | Apparent power and starting surge | 353.33 VA requested apparent power and 953.33 VA requested starting surge for the defined test catalogue |
+| `loadAssessment.test.ts` | Simultaneous appliance quantity | Five installed 10 W appliances with two operating simultaneously produce 20 W simultaneous demand |
+| `loadAssessment.test.ts` | Custom appliance rating | A valid 18 W override is accepted and used in the load calculation |
+| `loadAssessment.test.ts` | Input validation | Invalid quantities, duplicate appliance selections, empty selections, invalid safety margins and invalid custom wattages are rejected |
+| `marketplace.test.ts` | Coordinate validation | Valid latitude and longitude values are accepted; out-of-range and non-numeric coordinates are rejected |
+| `marketplace.test.ts` | Haversine distance | Identical coordinates return 0 m; test coordinate pairs are checked against approximate distances of 178 m and 1.78 km |
+| `marketplace.test.ts` | 50 m service-radius boundary | A distance of 50 m is included at a 50 m radius, while 51 m is excluded |
+| `marketplace.test.ts` | Effective service radius | The smallest applicable buyer radius, seller service radius and platform maximum is selected |
+| `marketplace.test.ts` | Listing inventory rule | The test fixture rejects a 7 kWh request where only 6 kWh remains sellable |
+| `security.test.ts` | Device authentication | A hardware request without a device API key is rejected with HTTP 401 and does not proceed to the next middleware |
+| `security.test.ts` | Administrator authorisation | A user with the OWNER role is rejected by the ADMIN-only middleware with HTTP 403 |
+| `security.test.ts` | Administrator authorisation | An authenticated user with the ADMIN role is allowed through the administrator guard |
+ 
+The load-assessment values are calculated from the artificial appliance catalogue defined in the unit test. They are software test fixtures, not measurements from the physical PAYGO meter. Likewise, the coordinate pairs are deterministic mathematical test inputs and are not field GPS measurements.
+
+### **4.9.2 API and functional tests**
+
+Twenty-four API/functional test cases are defined in `endpoints.test.ts`. The test starts the Express application on a local ephemeral HTTP port and sends HTTP requests to its routes. Several database and external-service operations are replaced with mocked responses so that route behaviour can be checked without making live payment transactions.
+
+**Table 4.5 Backend API and functional test coverage**
+
+| Functional area | Test performed | Expected response or behaviour |
+|---|---|---|
+| Health endpoint | Request the health route | HTTP 200 with server status metadata |
+| Authentication | Register without required fields | HTTP 400 validation response |
+| Authentication | Register a valid test user | HTTP 201 with a user and authentication token |
+| Authentication | Log in with valid mocked credentials | HTTP 200 with a user and authentication token |
+| Routing | Request an unknown endpoint | HTTP 404 |
+| Payment initiation | Omit the device identifier | HTTP 400 |
+| Payment initiation | Submit an amount below the configured minimum | HTTP 400 |
+| Payment initiation | Mock a successful Paystack initialisation | HTTP 200 with a checkout URL and payment reference |
+| Paystack webhook | Submit an invalid HMAC signature | HTTP 401; webhook rejected |
+| Paystack webhook | Submit a valid signed success event using mocked database operations | HTTP 200; the handler follows the success processing path |
+| Paystack webhook | Replay a previously processed payment reference | HTTP 200 duplicate response; mocked query path indicates no second credit |
+| Device access control | Request protected platform device information without authentication | HTTP 401 |
+| Hardware access control | Submit balance, heartbeat, acknowledgement, energy and token requests without a device API key | HTTP 401 responses |
+| Transaction verification | Query an unprocessed payment reference | Pending response |
+| Transaction verification | Query a mocked existing token record | Success response with token details |
+| Legacy hardware lifecycle simulation | Simulate an accepted MQTT credit acknowledgement | Mocked transaction status is expected to become CONFIRMED |
+| Legacy firmware idempotency simulation | Process the same transaction identifier twice in a simulated ESP32 handler | The simulated balance remains 25 kWh after the duplicate |
+| Fallback token simulation | Redeem a token marked `auto_credited = true` | The mocked database path must not add the energy balance a second time |
+| Offline payment simulation | Simulate the payment handler's pending hardware state and fallback-token record | Assertions check the expected database query path |
+
+The API tests provide evidence of the assertions encoded in the test suite, but they are not equivalent to a live production test. In particular, the mocked Paystack initialisation does not demonstrate a real payment, and mocked database operations do not establish that a production PostgreSQL transaction completed successfully.
+
+The legacy MQTT lifecycle tests also require careful interpretation. The current PAYGO firmware obtains the authoritative balance through HTTPS heartbeat and balance synchronisation. The physical prototype should therefore not be described as having passed an MQTT credit-command or transaction-specific hardware acknowledgement test. The MQTT-related cases are retained as software simulations of legacy handler behaviour and are not evidence of the current deployed meter workflow.
+
+### **4.9.3 Test execution status and commands**
+
+The backend test branch defines the following commands:
+
+```bash
+npm run type-check
+npm test
+npm run test:integration
+```
+
+The `npm test` command runs the unit test files for load assessment, marketplace location rules and access-control middleware. The `npm run test:integration` command runs the Express API/functional test file.
+
+**Table 4.6 Automated test execution record**
+
+| Test group | Test cases defined in source | Execution result |
+|---|---:|---|
+| Load assessment unit tests | 6 | Not yet verified by recorded terminal/CI output |
+| Marketplace unit tests | 9 | Not yet verified by recorded terminal/CI output |
+| Security middleware unit tests | 3 | Not yet verified by recorded terminal/CI output |
+| API/functional tests | 24 | Not yet verified by recorded terminal/CI output |
+| **Total** | **42** | **No overall pass/fail total claimed** |
+
+The table reports the number of test cases defined in the source files, not the number that have successfully passed. The actual pass and failure totals, test date and any error messages must be entered after the commands are executed in the backend environment. These automated software tests are separate from the physical tests of voltage, current, load response and relay operation reported earlier in this chapter.
+
+## **4.10 Discussion of Results**
 
 The combined-load test showed a clear change in displayed active power when the pressing iron's thermostat switched off its heating element. The meter displayed approximately 1.26 kW while the iron was heating and approximately 104 W after the heating element switched off, with the laptop charger remaining connected. This is evidence of functional response to a changing load.
 
@@ -759,7 +847,7 @@ The successful relay cut-off and reconnection test demonstrated the operation of
 
 The results do not establish calibrated measurement accuracy, long-term reliability or performance under a range of solar operating conditions. Those claims require additional testing with reference instruments, multiple loads and an extended field evaluation.
 
-## **4.10 Limitations of the Evaluation**
+## **4.11 Limitations of the Evaluation**
 
 The evaluation was limited by the absence of a calibrated reference energy meter. Consequently, no percentage error or accuracy result is reported. The available CSV export contained one consumption record, which is insufficient to establish daily or monthly trends. The reported electrical tests were conducted using a single-phase AC supply rather than an extended field installation on a distributed solar system. Long-term relay endurance, extended network interruption and large-scale marketplace operation were also outside the available test evidence.
 
